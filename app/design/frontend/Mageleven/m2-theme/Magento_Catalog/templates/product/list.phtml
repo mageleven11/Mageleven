@@ -1,0 +1,122 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+use Magento\Framework\App\Action\Action;
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+?>
+<?php
+$fanpageHelper = $this->helper('Itheavens\Fanpage\Helper\Data');
+$catalogHelperData = $this->helper('Magento\Catalog\Helper\Data');
+$categoryObject = $catalogHelperData->getCategory();
+?>
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+?>
+<?php if (!$_productCollection->count()): ?>
+    <!-- New Magento 2 Extensions -->
+    <section class="newextension m2ext">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeInDown"><h2><?= $categoryObject ? $categoryObject->getName() : ''; ?></h2></div>
+                <div class="col-lg-6 offset-lg-3 text-center">
+                    <div class="message info empty"><div><?=  __('We can\'t find products matching the selection.') ?></div></div>
+                </div>
+             </div>
+        </div>
+    </section>
+<?php else: ?>
+    <?= $block->getToolbarHtml() ?>
+    <?= $block->getAdditionalHtml() ?>
+    <?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $imageDisplayArea = 'category_page_grid';
+        $showDescription = false;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    } else {
+        $viewMode = 'list';
+        $imageDisplayArea = 'category_page_list';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    }
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+    ?>
+    <!-- New Magento 2 Extensions -->
+    <section class="newextension m2ext">
+        <div class="container">
+            <div class="row">
+                <?php if($fanpageHelper->getPagePath() == 'catalog_category_view') : ?>
+                <div class="col-lg-12 wow fadeInDown"><h2><?= $categoryObject ? $categoryObject->getName() : ''; ?></h2></div>
+                <?php endif; ?>
+                <?php if($fanpageHelper->getPagePath() == 'catalogsearch_result_index') : ?>
+                <div class="col-lg-12 wow fadeInDown"><h2><?= __('Search results for: ').$_GET['q']; ?></h2></div>
+                <?php endif; ?>
+                <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+                <?php foreach ($_productCollection as $_product): ?>
+                <div class="col-lg-3 col-md-6 wow fadeInUp">
+                    <div class="solbox">
+                        <div class="imgbox"><a href="<?=  $_product->getProductUrl() ?>"><img src="<?= $fanpageHelper->getImageResizeCategory($_product,290,360); ?>" class="img-fluid" alt="<?= $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"></a></div>
+                        <h3><a href="<?=  $_product->getProductUrl() ?>"><?= $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h3>
+                        <div class="price">
+                               <?php echo ($_product->getFinalPrice() == 0 ? 'Free' :  $priceHelper->currency($_product->getFinalPrice(), true, false))  ?>
+                        </div>
+                        <div class="review"><?php echo $_product->getReviewsCount(); ?> reviews</div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <?= $block->getToolbarHtml() ?>
+    <?php if (!$block->isRedirectToCartEnabled()) : ?>
+        <script type="text/x-magento-init">
+        {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {
+                    "product_sku": "<?=  $_product->getSku() ?>"
+                }
+            }
+        }
+        </script>
+    <?php endif; ?>
+<?php endif; ?>
+<!-- What Is User Experience? -->
+
+
+<div class="container">
+    <div class="urseexp gray-bg-box0">
+            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('extensions-experience')->toHtml(); ?>
+    </div>
+</div>
+
+<div class="essential">
+         <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('extensions-essential')->toHtml(); ?>
+</div>
+<div class="solutionpkg">
+         <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('extensions-solution')->toHtml(); ?>
+</div>
+<!-- conclusion -->
+<div class="container">
+   <!-- <div class="conclusion"> -->
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('extensions-conclusion')->toHtml(); ?> 
+     
+ <!--  </div> -->
+</div>

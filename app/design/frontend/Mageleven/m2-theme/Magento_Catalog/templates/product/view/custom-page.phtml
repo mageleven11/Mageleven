@@ -1,0 +1,12 @@
+<?php
+$productId = $_GET['pId'] ?? null;
+$productName = $_GET['pName'] ?? null;
+
+if ($productId && $productName) {
+    echo 'Product ID: ' . $productId;
+    echo '<br>';
+    echo 'Product Name: ' . urldecode($productName);
+    // Add any additional logic or content for your custom page here
+} else {
+    echo 'Invalid product information.';
+}

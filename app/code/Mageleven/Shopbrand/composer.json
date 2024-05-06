@@ -1,0 +1,27 @@
+{
+  "name": "mageleven/shopbrand",
+  "description": "Shop Brand magento 2.",
+  "require": {
+    "mageleven/community" : ">=1.0",
+    "mageleven/magicproduct" : ">=1.0"
+  },
+  "type": "magento2-module",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Alothemes",
+      "email": "support@mageleven.com",
+      "homepage": "https://mageleven.com",
+      "role": "Technical Support"
+    }
+  ],
+  "autoload": {
+    "files": [ "registration.php" ],
+    "psr-4": {
+      "Mageleven\\Shopbrand\\": ""
+    }
+  }
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="breadcrumbs" remove="true" />
+        <!-- <referenceContainer name="main.content" htmlClass="extdetail" htmlId="extdetail"/> -->
+        <referenceContainer name="columns" htmlClass="custom_mainnew" />
+        
+        <!-- <referenceContainer name="main" htmlClass="row" /> -->
+        <referenceContainer name="main">
+            <container name="leftpart" htmlTag="div" htmlClass="container" before="-"/>
+            <container name="rightpart" htmlTag="div" htmlClass="col-lg-4" after="leftpart"/>
+            <container name="leftpartinrow" htmlTag="div" htmlClass="row"/>
+            <container name="rightpartinrow" htmlTag="div" htmlClass="edition"/>
+        </referenceContainer>
+        <referenceContainer name="product.info.main" htmlTag="div" htmlClass="product-info-main col-md-6" />
+        <referenceContainer name="product.info.media" htmlTag="div" htmlClass="product media col-md-6" />
+
+        <move element="leftpartinrow" destination="leftpart" before="-"/>
+        <move element="product.info.main" destination="leftpartinrow" after="product.info.media"/>
+        <move element="product.info.media" destination="leftpartinrow" before="-"/>
+        <move element="product.info.details" destination="leftpartinrow" after="product.info.main"/>
+        <move element="require-cookie" destination="leftpartinrow" after="product.info.details"/>
+        <move element="rightpartinrow" destination="rightpart" before="-"/>
+        <move element="product.info" destination="rightpartinrow" before="-"/>
+
+        <referenceContainer name="page.wrapper">
+            <container name="otherproductsection" htmlTag="section" htmlClass="newextension m2ext" after="main.content"/>
+        </referenceContainer>
+        <move element="otherproductsection" destination="main.content" after="-"/>
+        <move element="catalog.product.related" destination="otherproductsection" before="-"/>
+        <move element="product.info.upsell" destination="otherproductsection" after="catalog.product.related"/>
+        <move element="product.info.additional" destination="otherproductsection" after="product.info.upsell"/>
+
+        <move element="product.price.final" destination="product.info.options.wrapper.bottom" before="-"/>
+        <referenceBlock name="product.info.price" remove="true" />
+        <referenceBlock name="product.info.social" remove="true" />
+
+         <block class="Magento\Catalog\Block\Product\View\Description" name="test_file" template="Magento_Catalog::product/view/mgversion.phtml"/>
+         <block class="Magento\Catalog\Block\Product\View\Description" name="custom-review" template="Magento_Catalog::product/view/custom_review.phtml"/>
+         <move element ="test_file" destination ="product.info.main" before="product.info" />
+        <referenceBlock name="page.main.title" remove="true"/>
+        <block class="Magento\Catalog\Block\Product\View\Description" name="product_file" template="Magento_Catalog::product/view/productname.phtml"/>
+        <block class="Magento\Catalog\Block\Product\View\Description" name="searchterms" template="Magento_Catalog::product/view/searchterms.phtml"/>
+        <move element="searchterms" destination="columns" before="-"/>
+        <referenceBlock name="product.info.review" remove="true"/>
+        <move element ="product_file" destination ="product.info.main" before="-" />
+        <move element="custom-review" destination="product.info.main" before="product.info.overview"/>
+    </body>
+</page>

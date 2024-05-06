@@ -1,0 +1,209 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+
+    	<!-- my custom code start -->
+    	<li class="level0 nav-1 category-item first last level-top ui-menu-item">
+    		<a href="<?php echo $this->getUrl(); ?>" class="level-top ui-menu-item-wrapper" id="ui-id-2" tabindex="-1" role="menuitem">
+    			<span><?= __("Home"); ?></span>
+    		</a>
+    	</li>
+    	<li class="level0 nav-1 category-item first last level-top ui-menu-item">
+    		<a href="<?php echo $this->getUrl("services"); ?>" class="level-top ui-menu-item-wrapper" id="ui-id-2" tabindex="-1" role="menuitem">
+    			<span><?= __("Services"); ?></span>
+    		</a>
+            <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-front" style="display: none; top: 49.6667px; left: 0px;" role="menu" aria-expanded="false" aria-hidden="true">
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("custom-development-services"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Custom Development</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-2 category-item ui-menu-item">
+    <a href="<?php echo $this->getUrl("magento-maintenance-services"); ?>" id="ui-id-4" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Magento Maintenance Services</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-3 category-item ui-menu-item">
+    <a href="<?php echo $this->getUrl("upgrade-to-magento-2"); ?>" id="ui-id-5" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Upgrade to Magento 2</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-4 category-item  ui-menu-item">
+    <a href="<?php echo $this->getUrl("b2b-implementation-services"); ?>" id="ui-id-6" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>B2B Implementation</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-4 category-item  ui-menu-item">
+    <a href="<?php echo $this->getUrl("magento-migration-services"); ?>" id="ui-id-6" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Magento Migration</span>
+    </a>
+  </li>
+  <!-- <li class="level1 nav-1-4 category-item  ui-menu-item">
+     <a href="<?php // echo $this->getUrl("magento-seo"); ?>" id="ui-id-6" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Magento SEO</span>
+    </a> 
+  </li> -->
+  <li class="level1 nav-1-4 category-item  ui-menu-item">
+     <a href="#" id="ui-id-6" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Magento SEO</span>
+    </a> 
+  </li>
+  <!-- <li class="level1 nav-1-4 category-item  ui-menu-item">
+    <a href="<?php // echo $this->getUrl("performance-optimization-service"); ?>" id="ui-id-6" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Performance Optimization Service</span>
+    </a>
+  </li> -->
+  <li class="level1 nav-1-4 category-item  ui-menu-item">
+    <a href="#" id="ui-id-6" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Performance Optimization Service</span>
+    </a>
+  </li>
+  <!-- <li class="level1 nav-1-4 category-item last ui-menu-item">
+    <a href="<?php //echo $this->getUrl("support"); ?>" id="ui-id-6" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Support</span>
+    </a>
+  </li> -->
+  <li class="level1 nav-1-4 category-item last ui-menu-item">
+    <a href="#" id="ui-id-6" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Support</span>
+    </a>
+  </li>
+</ul>
+    	</li>
+<li class="level0 nav-1 category-item first last level-top ui-menu-item">
+    		<a href="<?php echo $this->getUrl("about-us"); ?>" class="level-top ui-menu-item-wrapper" id="ui-id-2" tabindex="-1" role="menuitem">
+    			<span><?= __("About Us"); ?></span>
+    		</a>
+    	</li>
+    	<li class="level0 nav-1 category-item first last level-top ui-menu-item">
+    		<a href="/blog" class="level-top ui-menu-item-wrapper" id="ui-id-2" tabindex="-1" role="menuitem">
+    			<span><?= __("Blog"); ?></span>
+    		</a>
+    	</li>
+
+  <li class="level0 nav-1 category-item first last level-top ui-menu-item">
+        <a href="<?php echo $this->getUrl("extensions"); ?>" class="level-top ui-menu-item-wrapper" id="ui-id-2" tabindex="-1" role="menuitem">
+          <span><?= __("Our Extension"); ?></span>
+        </a>
+
+<ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-front cancelordernew" role="menu" aria-expanded="false" aria-hidden="true">
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+  <a href="<?php echo $this->getUrl("cancelorder.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Cancel Order</span>
+    </a>
+  </li>
+   <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("betterpopup.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Better Popup</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("bannerslider.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Banner Slider</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("autocurrency.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>AutoCurrency</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("slickcarousel.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Slick Carousel</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("testimonial.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Testimonial</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("lazyload.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Lazy Load</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("deleteorders.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Delete Orders</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("extrafee.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Extra Fee</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("imageoptimizer.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Image Optimizer</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("infinitescroll.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Infinite Scroll</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("shop-by-brand.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Shop By Brand</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("social-login.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Social Login</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("htmlsitemap.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>HTML Sitemap</span>
+    </a>
+  </li>
+  <li class="level1 nav-1-1 category-item first ui-menu-item">
+    <a href="<?php echo $this->getUrl("autorelatedproduct.html"); ?>" id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+      <span>Auto Related Product</span>
+    </a>
+  </li>
+ </ul>
+      </li>
+
+    	<li class="level0 nav-1 category-item first last level-top ui-menu-item">
+    		<!-- <a href="<?php //echo $this->getUrl("user-guide"); ?>" class="level-top ui-menu-item-wrapper" id="ui-id-2" tabindex="-1" role="menuitem">
+    			<span><?php // echo  __("User Guide"); ?></span>
+    		</a> -->
+        <a href="#" class="level-top ui-menu-item-wrapper" id="ui-id-2" tabindex="-1" role="menuitem">
+          <span><?= __("User Guide"); ?></span>
+        </a>
+    	</li>
+    	<li class="level0 nav-1 category-item first last level-top ui-menu-item">
+    		<a href="<?php echo $this->getUrl("contact"); ?>" class="level-top ui-menu-item-wrapper" id="ui-id-2" tabindex="-1" role="menuitem">
+    			<span><?= __("Contact"); ?></span>
+    		</a>
+    	</li>
+<li class="level0 nav-1 category-item first last level-top ui-menu-item">
+    <button onclick="location.href='<?php echo $this->getUrl("hire-us"); ?>'" class="hire-us-button">
+        <?= __("Hire Us"); ?>
+    </button>
+</li>
+
+    	<!-- my custom code end -->
+    </ul>
+</nav>
+<!-- <?= /* @escapeNotVerified */ $_menu ?>
+        <?= /* @escapeNotVerified */ $block->getChildHtml() ?> -->

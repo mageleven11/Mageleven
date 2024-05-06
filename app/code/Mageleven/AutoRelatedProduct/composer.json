@@ -1,0 +1,17 @@
+{
+    "name": "mageleven/module-auto-related-product",
+    "description": "Extend native Magento Up-Sells, Cross-Sells, and Related products",
+    "type": "magento2-module",
+    "version": "2.2.0",
+    "require": {
+        "mageleven/module-community" : ">=2.1.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mageleven\\AutoRelatedProduct\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

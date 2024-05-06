@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+	  <add id="Mageleven_Contributors::mageleven" title="Magelevens" translate="title" module="Mageleven_Contributors" sortOrder="90" dependsOnModule="Mageleven_Contributors" resource="Mageleven_Contributors::mageleven"/>
+	  
+	  <add id="Mageleven_Contributors::contributors" title="Contributors" translate="title" module="Mageleven_Contributors" parent="Mageleven_Contributors::mageleven" sortOrder="50" dependsOnModule="Mageleven_Contributors" resource="Mageleven_Contributors::contributors"/>
+	  <add id="Mageleven_Contributors::contributors_allcontributors" title="All Contributors" translate="title" module="Mageleven_Contributors" parent="Mageleven_Contributors::contributors" sortOrder="10" dependsOnModule="Mageleven_Contributors" action="contributors/allcontributors" resource="Mageleven_Contributors::contributors_allcontributors"/>
+
+	  <add id="Mageleven_Contributors::contactsupport" title="Contact Support" translate="title" module="Mageleven_Contributors" parent="Mageleven_Contributors::mageleven" sortOrder="51" dependsOnModule="Mageleven_Contributors" resource="Mageleven_Contributors::contactsupport"/>
+	  <add id="Mageleven_Contributors::contributors_allcontactsupporttype" title="Contact Type" translate="title" module="Mageleven_Contributors" parent="Mageleven_Contributors::contactsupport" sortOrder="10" dependsOnModule="Mageleven_Contributors" action="contributors/allcontactsupporttype" resource="Mageleven_Contributors::contributors_allcontactsupporttype"/>
+
+	  <add id="Mageleven_Contributors::contributors_allcontactsupport" title="Contact Support" translate="title" module="Mageleven_Contributors" parent="Mageleven_Contributors::contactsupport" sortOrder="10" dependsOnModule="Mageleven_Contributors" action="contributors/allcontactsupport" resource="Mageleven_Contributors::contributors_allcontactsupport"/>
+
+	  <add id="Mageleven_Contributors::contributors_allpartnerprogram" title="Partner Program" translate="title" module="Mageleven_Contributors" parent="Mageleven_Contributors::contactsupport" sortOrder="10" dependsOnModule="Mageleven_Contributors" action="contributors/allpartnerprogram" resource="Mageleven_Contributors::contributors_allpartnerprogram"/>
+
+	</menu>
+</config>

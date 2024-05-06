@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+	  
+
+	  <add id="Mageleven_Discountrule::discountrule_alldiscountrule" title="All Discount Rule" translate="title" module="Mageleven_Discountrule" parent="Mageleven_Contributors::contributors" sortOrder="10" dependsOnModule="Mageleven_Discountrule" action="discountrule/alldiscountrule" resource="Mageleven_Discountrule::discountrule_alldiscountrule"/>
+	  
+	</menu>
+</config>
+  

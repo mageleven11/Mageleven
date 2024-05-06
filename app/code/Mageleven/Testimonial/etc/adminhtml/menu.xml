@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Mageleven 
+ * @category    Mageleven 
+ * @copyright   Copyright (c) 2014 Mageleven (http://www.mageleven.net/) 
+ * @license     http://www.mageleven.net/license-agreement.html
+ * @Author: DOng NGuyen<nguyen@dvn.com>
+ * @@Create Date: 2016-02-23 18:59:34
+ * @@Modify Date: 2016-04-22 17:12:32
+ * @@Function:
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<!-- <update id="mageleven" title="Mageleven" module="Mageleven_Testimonial" sortOrder="10" resource="Mageleven_Testimonial::mageleven"/> -->
+
+	        <add id="Mageleven_Testimonial::testimonial" title="Testimonial" module="Mageleven_Testimonial" sortOrder="10" parent="mageleven" resource="Mageleven_Testimonial::testimonial"/>
+
+				<add id="Mageleven_Testimonial::testimonial_index" title="Testimonial" module="Mageleven_Testimonial" sortOrder="10" parent="Mageleven_Testimonial::testimonial" action="testimonial/index" resource="Mageleven_Testimonial::testimonial_index"/>
+    </menu>
+</config>

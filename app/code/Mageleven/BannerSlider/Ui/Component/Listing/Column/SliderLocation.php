@@ -1,0 +1,100 @@
+<?php
+/**
+ * Mageleven
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageleven.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageleven.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageleven
+ * @package     Mageleven_BannerSlider
+ * @copyright   Copyright (c) Mageleven (https://www.mageleven.com/)
+ * @license     https://www.mageleven.com/LICENSE.txt
+ */
+
+namespace Mageleven\BannerSlider\Ui\Component\Listing\Column;
+
+use Magento\Ui\Component\Listing\Columns\Column;
+use Mageleven\BannerSlider\Model\Config\Source\Location;
+
+/**
+ * Class CommentContent
+ * @package Mageleven\Blog\Ui\Component\Listing\Columns
+ */
+class SliderLocation extends Column
+{
+    /**
+     * Prepare Data Source
+     *
+     * @param array $dataSource
+     *
+     * @return array
+     */
+    public function prepareDataSource(array $dataSource)
+    {
+        if (isset($dataSource['data']['items'])) {
+            foreach ($dataSource['data']['items'] as & $item) {
+                if (isset($item[$this->getData('name')])) {
+                    $data                         = $this->getLocation($item[$this->getData('name')]);
+                    $type                         = array_unique($data['type']);
+                    $item[$this->getData('name')] = '<b>' . implode(', ', $type) . '</b></br>';
+                }
+            }
+        }
+
+        return $dataSource;
+    }
+
+    /**
+     * @param $data
+     *
+     * @return array
+     */
+    public function getLocation($data)
+    {
+        $location = [];
+        $data     = explode(',', $data);
+        foreach ($data as $item) {
+            switch ($item) {
+                case Location::ALLPAGE_CONTENT_BOTTOM:
+                case Location::ALLPAGE_PAGE_TOP:
+                case Location::ALLPAGE_PAGE_BOTTOM:
+                case Location::ALLPAGE_CONTENT_TOP:
+                    $location['type'][] = __('All Page');
+                    break;
+                case Location::HOMEPAGE_CONTENT_TOP:
+                case Location::HOMEPAGE_CONTENT_BOTTOM:
+                case Location::HOMEPAGE_PAGE_TOP:
+                case Location::HOMEPAGE_PAGE_BOTTOM:
+                    $location['type'][] = __('Home Page');
+                    break;
+                case Location::CATEGORY_CONTENT_TOP:
+                case Location::CATEGORY_CONTENT_BOTTOM:
+                case Location::CATEGORY_PAGE_TOP:
+                case Location::CATEGORY_PAGE_BOTTOM:
+                case Location::CATEGORY_SIDEBAR_TOP:
+                case Location::CATEGORY_SIDEBAR_BOTTOM:
+                    $location['type'][] = __('Category Page');
+                    break;
+                case Location::PRODUCT_CONTENT_TOP:
+                case Location::PRODUCT_CONTENT_BOTTOM:
+                case Location::PRODUCT_PAGE_TOP:
+                case Location::PRODUCT_PAGE_BOTTOM:
+                    $location['type'][] = __('Product Page');
+                    break;
+                case Location::USING_SNIPPET_CODE:
+                    $location['type'][] = __('Custom');
+                    break;
+            }
+        }
+
+        return $location;
+    }
+}

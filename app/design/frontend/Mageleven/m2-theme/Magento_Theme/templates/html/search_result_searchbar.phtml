@@ -1,0 +1,13 @@
+<section class="service-banner careers-banner ext-banner">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 wow fadeInUp">
+                <div class="slidcontent text-center">
+                    <h4>“<?= __("Find extensions that can solve your business problems"); ?>”</h4>
+                    <div class="search"><?= $block->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setTemplate('Magento_Search::form.mini.phtml')->toHtml(); ?></div>
+                    <?= $block->getLayout()->createBlock('Magento\Search\Block\Term')->setTemplate('Magento_Search::term.phtml')->toHtml(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

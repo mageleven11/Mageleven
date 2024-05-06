@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="breadcrumbs" remove="true" />
+        <referenceBlock name="page.main.title" remove="true" />
+        <referenceBlock name="product_list_toolbar" display="false" />
+        <referenceBlock name="sidebar.main" remove="true" />
+        <referenceContainer name="catalog.leftnav" remove="true" />
+        <referenceContainer name="page.wrapper">
+            <container name="main.container" as="main-container" label="main-container" htmlTag="div" htmlId="main-container" before="page-footer"/>
+        </referenceContainer>
+        <move element="main.content" destination="main.container"/>
+    </body>
+</page>

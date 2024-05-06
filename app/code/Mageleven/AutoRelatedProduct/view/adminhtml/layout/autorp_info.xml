@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Mageleven (support@mageleven.com). All rights reserved.
+ * Please visit Mageleven.com for license details (https://mageleven.com/end-user-license-agreement).
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Mageleven\AutoRelatedProduct\Block\Adminhtml\CheckEnableInfo" name="autorp.info" template="Mageleven_AutoRelatedProduct::info.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

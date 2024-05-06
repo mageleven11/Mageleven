@@ -1,0 +1,26 @@
+User-agent: *
+
+Disallow: /private/
+Disallow: /admin/
+Disallow: /?q=admin/
+Disallow: /cgi-bin/
+Disallow: /cdn-cgi/
+Disallow: /checkout/cart/
+Disallow: /customer/account/
+Disallow: /catalogsearch/result/
+Disallow: /catalogsearch/
+Disallow: /blog/author/
+Disallow: /blog/category/
+Disallow: /blog/month/
+Disallow: /tmp/
+Disallow: /search/
+Disallow: /?q=search/
+Disallow: /trackback/
+Disallow: /comments/
+Disallow: /comment/reply/
+Disallow: /getBlogComment/
+Disallow: /?q=comment/reply/
+Disallow: */trackback/
+Disallow: /*?
+Disallow: /scripts/
+Disallow: /hidden-page.html

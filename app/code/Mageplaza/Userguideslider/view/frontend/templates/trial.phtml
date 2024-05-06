@@ -1,0 +1,98 @@
+<?php
+$productCollection = $block->getProductCollection();
+// foreach ($productCollection as $product) {
+// 	echo "<pre>";
+//     print_r($product->getData());     
+    
+// }
+?>
+<div class="container">
+<div class="product-lists owl-carousel">
+    <?php foreach ($productCollection as $product): ?>
+        <div class="product-item">
+            <div class="product-image">
+                <img src="<?php echo $this->getUrl('media/catalog/product').$product['image']; ?>" alt="<?php echo $block->escapeHtml($product->getName()); ?>">
+                <!-- <img src="<?php// echo $this->getUrl('media/catalog/product').$product->getImage(); ?>" alt="<?php// echo $block->escapeHtml($product->getName()); ?>"> -->
+            </div>
+            <div class="product-name">
+               <span> <?php echo $block->escapeHtml($product->getName()); ?> </span>
+               <s> </s>
+            </div>
+            <div class="product-price">
+               <span> <?php echo ($product->getPrice() == 0) ? 'Free' :  $block->getFormattedPrice($product->getPrice()); ?> </span>
+            </div>
+            <div class="rating-review">
+             <?php  $productId = $product->getId();
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$reviewFactory = $objectManager->create('Magento\Review\Model\Review');
+$product = $objectManager->create('Magento\Catalog\Model\Product')->load($productId);
+$storeManager  = $objectManager->create('\Magento\Store\Model\StoreManagerInterface');
+$storeId = 1;
+$reviewFactory->getEntitySummary($product, $storeId);
+
+$ratingSummary = $product->getRatingSummary()->getRatingSummary();
+$reviewCount = $product->getRatingSummary()->getReviewsCount();
+?>
+<?php if($ratingSummary){ ?>
+<div class="product-reviews-summary short">
+    <div class="rating-summary">
+        <div title="<?php echo (int)$ratingSummary; ?>%" class="rating-result">
+            <span style="width:<?php echo (int)$ratingSummary; ?>%"><span><?php echo (int)$ratingSummary; ?>%</span></span>
+        </div>
+    </div>
+    <div class="reviews-actions">
+        <?php echo __('('.$reviewCount.') Reviews'); ?>
+    </div>
+</div>
+<?php }
+else { $ratingSummary = 0; ?>
+
+      <div class="rating-summary">
+        <div title="<?php echo (int)$ratingSummary; ?>%" class="rating-result">
+            <span style="width:<?php echo (int)$ratingSummary; ?>%"><span><?php echo (int)$ratingSummary; ?>%</span></span>
+        </div>
+    </div>
+<?php }
+
+ ?>
+                    </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+</div>
+<script>
+  require(['jquery'],function($){
+setTimeout(function(){
+
+  $('.product-lists').owlCarousel({
+        items: 1,
+        margin: 10,
+        autoplay: true,
+        autoHeight: true,
+        nav: true,
+        dots: false,
+        loop: true,
+        smartSpeed: 450,
+        navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+        responsiveClass:true,
+        responsive:{
+          0:{
+            items:2
+          },
+          600:{
+            items:2,
+          },
+          768:{
+            items:3,
+          },
+          992:{
+            items:4,
+          },
+          1200:{
+            items:5,
+          }
+        }
+      });
+},3000);
+})
+</script>

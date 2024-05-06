@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Itheavens_ImageUploader::images_uploader" title="Image Uploader" translate="title" module="Itheavens_ImageUploader" sortOrder="20" resource="Itheavens_ImageUploader::upload" />
+        <add id="Itheavens_ImageUploader::images" title="All Images" translate="title" module="Itheavens_ImageUploader" sortOrder="0" parent="Itheavens_ImageUploader::images_uploader"  action="imageuploader/images" resource="Itheavens_ImageUploader::upload" />
+    </menu>
+</config>

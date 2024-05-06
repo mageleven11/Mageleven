@@ -1,0 +1,23 @@
+{
+  "name": "mageleven/module-core",
+  "description": "Mageleven Core for Magento 2",
+  "type": "magento2-module",
+  "version": "1.4.11",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Mageleven",
+      "email": "support@mageleven.com",
+      "homepage": "https://www.mageleven.com",
+      "role": "Technical Support"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Mageleven\\Core\\": ""
+    }
+  }
+}

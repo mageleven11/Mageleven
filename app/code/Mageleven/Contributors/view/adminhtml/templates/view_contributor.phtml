@@ -1,0 +1,45 @@
+<?php $contributor = $block->getContributorDetail()->getData(); ?>
+<section class="admin__page-section order-view-account-information">
+   <div class="admin__page-section-content">
+      <div class="admin__page-section-item order-information">
+         <div class="admin__page-section-item-content">
+            <table class="admin__table-secondary order-information-table">
+               <tbody>
+                  <tr>
+                     <th>Date</th>
+                     <td><?php echo date("M d, Y h:i:s A",strtotime($contributor['created_at'])); ?></td>
+                  </tr>
+                  <tr>
+                     <th>Author Name</th>
+                     <td><?php echo $contributor['author_name'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Company</th>
+                     <td><?php echo $contributor['company'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Website</th>
+                     <td><?php echo $contributor['website'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Email</th>
+                     <td><?php echo $contributor['email'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Blog Contribute</th>
+                     <td><?php echo $contributor['blog_contribute'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Google Docs Content</th>
+                     <td><?php echo $contributor['google_docs_content'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Note</th>
+                     <td><?php echo $contributor['note'] ?></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</section>

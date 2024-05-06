@@ -1,0 +1,134 @@
+<?php
+/**
+ * Copyright © Mageleven (support@mageleven.com). All rights reserved.
+ * Please visit Mageleven.com for license details (https://mageleven.com/end-user-license-agreement).
+ */
+?>
+
+<div class="sitemap-search">
+    <input id="html-sitemap-search" placeholder="<?= $block->escapeHtml(__('Search')) ?>" style="border-radius: 15px; padding: 15px;" type="text"/>
+</div>
+
+<style>
+    /* Layout **********/
+    [class*="htmlsitemap-"] .page-main {padding-left: 20px;padding-right: 20px;}
+    [class*="htmlsitemap-"] .sitemap-item-type {font-size: 14px;}
+
+    /* Sitemap Index **********/
+    /* Search */
+    .sitemap-search {margin-bottom: 30px;}
+    .sitemap-search input {width: 100%;height: 40px;font-size: 14px;border: 1px solid #c2c2c2;}
+
+    .htmlsitemap-index-index .sitemap-item-type {margin-bottom: 40px;}
+    .htmlsitemap-index-index .sitemap-item-type > h2 {margin: 0 0 20px;}
+    .htmlsitemap-index-index .sitemap-item-type .highlight-result {color: red;}
+
+    /* Category */
+    [class*="htmlsitemap-"] .widget.block-categories .accordion {margin-bottom: 20px;}
+    [class*="htmlsitemap-"] .widget.block-categories ul li {padding: 0 0 0 15px;}
+    [class*="htmlsitemap-"] .widget.block-categories ul li a {display: inline-block;font-size: 14px;padding: 5px;font-weight: 400;}
+
+    /* Grid Items ***********/
+    [class*="htmlsitemap-"] .sitemap-item-wrap {display: grid;grid-column-gap: 20px;grid-row-gap: 10px;grid-template-columns: repeat(4, 1fr);margin-bottom: 20px;}
+    [class*="htmlsitemap-"] .sitemap-item-type a {font-size: 14px;}
+    [class*="htmlsitemap-"] .sitemap-item-type a:hover {text-decoration: underline;}
+    [class*="htmlsitemap-"] .sitemap-item-wrap .sitemap-item {font-size: 14px;}
+    [class*="htmlsitemap-"] .sitemap-item-wrap .sitemap-item:hover {text-decoration: underline;}
+    [class*="htmlsitemap-"] .sitemap-item-type .view-more {display: inline-block;margin-top: 0;margin-left: 0;}
+
+    @media (max-width: 1023px) {
+        [class*="htmlsitemap-"] .sitemap-item-wrap {display: grid;grid-gap: 10px;grid-template-columns: repeat(3, 1fr);}
+    }
+    @media (max-width: 767px) {
+        [class*="htmlsitemap-"] .sitemap-item-wrap {display: grid;grid-gap: 10px;grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 575px) {
+        [class*="htmlsitemap-"] .sitemap-item-wrap {display: grid;grid-gap: 10px;grid-template-columns: 1fr;}
+    }
+
+    /* Products */
+    [class*="htmlsitemap-"] .sitemap-item-type .sitemap-item-section {margin-bottom: 20px;}
+    [class*="htmlsitemap-"] .sitemap-item-type .sitemap-item-section > p {margin-bottom: 10px;}
+    [class*="htmlsitemap-"] .sitemap-item-type .sitemap-item-section .sitemap-item-wrap {padding-left: 40px;}
+
+</style>
+
+
+<script>
+    require(['jquery'], function($) {
+
+        var searchQuery = '';
+
+        initSearch();
+
+        function initSearch() {
+            $('#html-sitemap-search').keyup(function(el) {
+                var val = el.target.value;
+
+                if (searchQuery != val.toLocaleLowerCase()) {
+                    findItems(val);
+                }
+            });
+
+            $('.sitemap-item-section a').each(function (key, el) {
+                el.originalTextContent = el.innerText ? el.innerHTML : el.textContent;
+            });
+        }
+
+        function findItems(query) {
+            searchQuery = query.replace(/^\s+/, '').replace(/\s+$/, '').toLowerCase();
+
+            $('.sitemap-item-section').each(function(key, el) {
+                var noResults = true;
+
+                $(this).find('a').each(function(key, el) {
+                    el.textContent = el.originalTextContent.replace(/&amp;/g, '&');
+                    if (searchQuery.replace(/\s+/, '') != '') {
+                        if (el.originalTextContent.toLowerCase().indexOf(searchQuery) == -1) {
+                            $(el).hide();
+                        } else {
+                            $(el).show();
+                            noResults = false;
+                            highlightResult($(el).get(0), searchQuery, "highlight-result");
+                        }
+                    } else {
+                        $(el).show();
+                        noResults = false;
+                    }
+                });
+
+                if (noResults) {
+                    $(this).hide();
+                } else  {
+                    $(this).show();
+                }
+            });
+        }
+
+        function highlightResult(element, term, className) {
+            className = className || 'highlight';
+            term = (term || '').toUpperCase();
+            if (term.replace(/\s+/, '') == '') {
+                return false
+            }
+
+            if (element.nodeType == Node.TEXT_NODE) {
+                var pos = element.data.toUpperCase().indexOf(term);
+                if (pos >= 0) {
+                    var searchResult = element.splitText(pos),
+                        spanWrapper = document.createElement('span');
+
+                    searchResult.splitText(term.length);
+                    spanWrapper.className = className;
+                    spanWrapper.appendChild(searchResult.cloneNode(true));
+                    searchResult.parentNode.replaceChild(spanWrapper, searchResult);
+
+                }
+            } else if (element.nodeType == Node.ELEMENT_NODE && element.childNodes && !/(script|style)/i.test(element.tagName)) {
+                for (var i = 0; i < element.childNodes.length; ++i) {
+                    i += highlightResult(element.childNodes[i], term, className);
+                }
+            }
+        };
+    });
+</script>

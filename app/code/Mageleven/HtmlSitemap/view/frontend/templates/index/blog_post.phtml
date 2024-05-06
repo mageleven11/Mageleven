@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright © Mageleven (support@mageleven.com). All rights reserved.
+ * Please visit Mageleven.com for license details (https://mageleven.com/end-user-license-agreement).
+ */
+?>
+<?php
+/**
+ * @var \Mageleven\HtmlSitemap\Block\Blog\Post $block
+ */
+
+$posts = $block->getPostsCollection();
+?>
+
+<?php if (count($posts)) { ?>
+<div class="sitemap-item-type sitemap-item-section">
+    <h2 class="sitemap-title"><?= $block->escapeHtml(__($block->getBlockTitle())) ?></h2>
+    <div class="sitemap-item-wrap">
+    <?php foreach ($posts as $post): ?>
+        <a class="sitemap-item" href="<?= $block->escapeUrl($post->getPostUrl()) ?>" title="<?= $block->escapeHtml($post->getTitle()) ?>">
+            <?= $block->escapeHtml($post->getTitle()) ?>
+        </a>
+    <?php endforeach; ?>
+    </div>
+    <?php if ($block->showViewMore()): ?>
+        <a class="view-more" href="<?= $block->escapeUrl($block->getUrl('*/blog_post/post'))?>">
+            <?= $block->escapeHtml(__('View more'))?>
+        </a>
+    <?php endif; ?>
+</div>
+<?php } ?>

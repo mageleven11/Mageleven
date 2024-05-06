@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">contributors_allcontactsupporttype_form.allcontactsupporttype_form_data_source</item>
+            <item name="deps" xsi:type="string">contributors_allcontactsupporttype_form.allcontactsupporttype_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Type Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">contributors_allcontactsupporttype_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Mageleven\Contributors\Block\Adminhtml\Allcontactsupporttype\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">Mageleven\Contributors\Block\Adminhtml\Allcontactsupporttype\Edit\DeleteButton</item>
+            <item name="reset" xsi:type="string">Mageleven\Contributors\Block\Adminhtml\Allcontactsupporttype\Edit\ResetButton</item> 
+          
+            <item name="save" xsi:type="string">Mageleven\Contributors\Block\Adminhtml\Allcontactsupporttype\Edit\SaveButton</item>
+            <item name="save_and_continue" xsi:type="string">Mageleven\Contributors\Block\Adminhtml\Allcontactsupporttype\Edit\SaveAndContinueButton</item>
+
+        </item>
+    </argument>
+    <settings>
+        
+        <namespace>contributors_allcontactsupporttype_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>contributors_allcontactsupporttype_form.allcontactsupporttype_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="allcontactsupporttype_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="contributors/allcontactsupporttype/save"/>
+        </settings>
+        <dataProvider class="Mageleven\Contributors\Model\Allcontactsupporttype\DataProvider" name="allcontactsupporttype_form_data_source">
+            <settings>
+                <requestFieldName>cs_id</requestFieldName>
+                <primaryFieldName>cs_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="cs_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">allcontactsupporttype</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>cs_id</dataScope>
+            </settings>
+        </field>
+        <field name="status" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">allcontactsupporttype</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Enable Type</label>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="type" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">allcontactsupporttype</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Type</label>
+                <dataScope>type</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+    
+</form>

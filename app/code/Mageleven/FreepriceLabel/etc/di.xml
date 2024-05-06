@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Pricing\Render\PriceBox">
+       <plugin name="change_text_for_free_product" type="Mageleven\FreepriceLabel\Plugin\Pricing\Render\PriceBox" sortOrder="1"/>
+    </type>
+</config>

@@ -1,0 +1,26 @@
+{
+  "name": "mageleven/module-banner-slider",
+  "description": "Magento 2 Banner Slider extension",
+  "require": {
+    "mageleven/module-core": "^1.5.3"
+  },
+  "type": "magento2-module",
+  "version": "4.0.4",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Mageleven",
+      "email": "support@mageleven.com",
+      "homepage": "https://www.mageleven.com",
+      "role": "Technical Support"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Mageleven\\BannerSlider\\": ""
+    }
+  }
+}

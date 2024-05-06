@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Mageleven (support@mageleven.com). All rights reserved.
+ * Please visit Mageleven.com for license details (https://mageleven.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_load_before">
+        <observer name="mageleven_lazyload_layout_load_before" instance="Mageleven\LazyLoad\Observer\LayoutLoadBeforeObserver" />
+    </event>
+</config>

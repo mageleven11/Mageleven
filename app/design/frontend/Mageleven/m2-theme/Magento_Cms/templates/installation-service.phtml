@@ -1,0 +1,536 @@
+<?php
+$block = $block->getLayout()->createBlock('Custom\Installationservice\Block\Index\Totalreviews');
+$customReviews = $block->getCustomReviews();
+
+?>
+<div class="install-serv-banner">
+    <div class="container">
+        <img src="<?php echo $this->getUrl('media/cms/new')."app-installation.png"; ?>" alt="app-installation">
+        <div class="install-title">Streamline Your Success: Seamless Magento 2 Magento Installation with Mageleven</div>
+        <p>Unleash the full potential of your Magento 2 with expert installation from Mageleven. We handle the technical complexities, so you can focus on what matters most - your business growth. Say goodbye to installation hassles and hello to a smoothly functioning store equipped with powerful tools. Partner with Mageleven for a seamless installation experience.</p>
+<!--         <div class="install-rating">
+            <?php //echo "Total rating : 100"; ?>
+        </div> -->
+
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <div class="install-check">
+                    <i class="fa fa-check"></i>
+                    <div>Expertise</div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <div class="install-check">
+                    <i class="fa fa-check"></i>
+                    <div>Efficiency</div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <div class="install-check">
+                    <i class="fa fa-check"></i>
+                    <div>Security</div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <div class="install-check">
+                    <i class="fa fa-check"></i>
+                    <div>Support</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <button  class="btn btn-primary" id="get-quote-btn">Enquiry</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="quote-modal" style="display: none;">
+    <div id="quote-popup">
+          <form id="quote-form" action="<?php echo $block->getUrl('installationservice/index/enquiry') ?>" method="POST">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" data-validate="{required:true}" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" data-validate="{required:true, 'validate-email':true}" required>
+    </div>
+    <div>
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" data-validate="{required:true}" required>
+    </div>
+    <div>
+        <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" data-validate="{required:true, 'validate-custom-phone':true}" required>
+    </div>
+    <div>
+        <label for="message">Description</label>
+        <textarea id="message" name="message" data-validate="{required:true}" required></textarea>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+    </div>
+</div>
+
+
+
+<section class="marketing magento-upgrade-services gray-bg">
+  <div class="container">
+    <div class="row justify-content-center">
+
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="whbox">
+               <img src="<?php echo $this->getUrl('media/cms/new')."service-img4.png"; ?>" alt="service-img">
+          <h4>Avoid Errors</h4>
+          <p>Eliminate installation complications and potential performance issues. By getting the top practices that your online store requires to give the best performance</p>              
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="whbox">
+               <img src="<?php echo $this->getUrl('media/cms/new')."service-img9.png"; ?>" alt="service-img">
+          <h4>Save Time</h4>
+          <p>Focus on core business tasks while we handle the technical aspects. You do not have to learn from scratch and put in your efforts; instead of putting the same in other tasks.</p>              
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="whbox">
+               <img src="<?php echo $this->getUrl('media/cms/new')."service-img2.png"; ?>" alt="service-img">
+          <h4>Maximize Functionality</h4>
+          <p>Ensure your extensions function optimally for peak performance. And at Mageleven; help you with the same and get the performance your store requires.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="what-included-sec wow fadeInUp">
+  <div class="container">
+    <h2 class="service-psec-title text-center">Unlocking Value: Insights into Magento Magento Installation Services</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-11">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-xl-5 col-lg-6 order-lg-last wow fadeInRight">
+                  <img src="<?php echo $this->getUrl('media/cms/new')."help-center.png"; ?>" alt="help-center">
+          </div>
+          <div class="col-xl-5 col-lg-6 wow fadeInLeft">
+            <div class="what-included-title">Help Center</div>
+            <p>Professional installation of Magento 2 can empower your store in a number of ways. As we have delivered the top experience to our previous customers. Let us introduce you to all of them:</p>
+
+            <ul class="check-ul">
+              <li>
+                <i class="fa fa-check"></i>
+                <span>Seamless integration with existing system</span>
+              </li>
+              <li>
+                <i class="fa fa-check"></i>
+                <span>Reduced risk of performance issues and security vulnerabilities</span>
+              </li>
+              <li>
+                <i class="fa fa-check"></i>
+                <span>Faster time to market for your new extension-powered features</span>
+              </li>
+              <li>
+                <i class="fa fa-check"></i>
+                <span>Peace of mind knowing your store is in expert hands</span>
+              </li>
+              <li>
+                <i class="fa fa-check"></i>
+                <span>A professional Magento 2 installation will provide a better user experience for your customers, making it easier for them to find the products they're looking for and checkout.</span>
+              </li>
+           <!--    <li>
+                <i class="fa fa-check"></i>
+                <span>Double check after installation</span>
+              </li>
+            </ul>
+ -->
+            <a href="/contact" class="btn btn-primary fn-sm">Let’s Talk</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="our-process-sec">
+  <div class="container">
+    <div class="section-title">Mageleven's Practices for Superior Installation Services</div>
+
+    <div class="row align-items-center">
+      <div class="col-xl-4 col-lg-4 col-md-12">
+        <ul class="nav flex-column nav-pills tabs-design" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="request-info-tab" data-toggle="tab" href="#request-info" role="tab" aria-controls="request-info" aria-selected="true">
+              <big>01</big>
+              <span>Pre-installation analysis</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="mageleven-install-tab" data-toggle="tab" href="#mageleven-install" role="tab" aria-controls="mageleven-install" aria-selected="false">
+              <big>02</big>
+              <span>Meticulous installation</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="delivery-check-tab" data-toggle="tab" href="#delivery-check" role="tab" aria-controls="delivery-check" aria-selected="false">
+              <big>03</big>
+              <span>Post-installation testing and support</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-xl-8 col-lg-8 col-md-12">
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="request-info" role="tabpanel" aria-labelledby="request-info-tab">
+            <div class="row align-items-center">
+              <div class="col-md-7">
+                <p>We assess your compatibility and optimize for smooth integration.</p>
+
+                <ul class="check-ul">
+                  <li><i class="fa fa-check"></i> We evaluate your current systems and processes to identify any potential conflicts or incompatibilities.</li>
+                  <li><i class="fa fa-check"></i> We develop a plan to integrate your new system with your existing infrastructure.</li>
+                  <li><i class="fa fa-check"></i>We test the integration to ensure that it is smooth and efficient.</li>
+                </ul>
+
+              </div>
+              <div class="col-md-5">
+                      <img src="<?php echo $this->getUrl('media/cms/new')."Newsletter-image.png"; ?>" alt="newsletter">
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="mageleven-install" role="tabpanel" aria-labelledby="mageleven-install-tab">
+            <div class="row align-items-center">
+              <div class="col-md-7">
+                <p>Our certified experts handle the process with precision and care. Here are three bullet points that highlight what our experts do:</p>
+
+                <ul class="check-ul">
+                  <li><i class="fa fa-check"></i> They carefully review your documents to ensure that they are complete and accurate.</li>
+                  <li><i class="fa fa-check"></i>They follow all applicable laws and regulations to ensure that your documents are legally sound.</li>
+                  <li><i class="fa fa-check"></i> They communicate with you throughout the process to keep you informed and to answer any questions you may have.</li>
+                </ul>
+
+              </div>
+              <div class="col-md-5">
+                      <img src="<?php echo $this->getUrl('media/cms/new')."Newsletter-image.png"; ?>" alt="newsletter-img">
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="delivery-check" role="tabpanel" aria-labelledby="delivery-check-tab">
+            <div class="row align-items-center">
+              <div class="col-md-7">
+                <p>We ensure functionality and provide ongoing guidance. Our services include:</p>
+
+                <ul class="check-ul">
+                  <li><i class="fa fa-check"></i>Testing and debugging to ensure that your website or application is functioning properly.</li>
+                  <li><i class="fa fa-check"></i>Providing ongoing support to help you resolve any issues that may arise.</li>
+                  <li><i class="fa fa-check"></i> Offering training and documentation to help you learn how to use your website or application effectively.</li>
+                </ul>
+
+              </div>
+              <div class="col-md-5">
+                     <img src="<?php echo $this->getUrl('media/cms/new')."Newsletter-image.png"; ?>" alt="newsletter-img">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="note-div">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-auto col-lg-12">
+        <p><big>Note :</big> This service is NOT included the following:</p>
+      </div>
+      <div class="col-xl-auto col-lg-6 col-md-6 col-sm-6">
+        <div class="check-div"><span><i class="fa fa-check"></i></span> Configuration of the extension such as Rules, API …</div>
+      </div>
+      <div class="col-xl-auto col-lg-6 col-md-6 col-sm-6">
+        <div class="check-div"><span><i class="fa fa-check"></i></span> Bug fixing of other vendor's extensions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews-sec">
+  <div class="container">
+    <div class="section-title">Our quality speaks see how:</div>
+
+    <div class="reviews-listing">
+        <?php foreach ($customReviews as $review): ?>
+          <?php if($review->getStatus() == 1){ ?>
+          <div class="reviews-list">
+           <div class="reviews-list-left">
+              <div class="reviews-list-img">
+                     <?= $firstChar = substr($review->getName(), 0, 1); ?>
+              </div>
+            </div>
+
+            <div class="reviews-list-right">
+              <div class="reviews-list-col">
+                     
+                <div class="star-ratings">
+                    <?php
+                    $rating = $review->getRating();
+                    // Loop to generate filled stars
+                    for ($i = 1; $i <= 5; $i++) {
+                        if ($i <= $rating) {
+                            echo '<span class="star-filled"></span>';
+                        } else {
+                            echo '<span class="star-empty"></span>';
+                        }
+                    }
+                    ?>
+                </div>
+                <div class="reviews-list-name"><?= $review->getName(); ?></div>
+                <span class="reviews-title"><?php $list = explode(" ",$review->getCreatedAt()); 
+                 echo $list[0];
+                 //print_r($list);
+                ?></span>
+                
+              </div>
+              <div class="review_content"><?= $review->getDescription(); ?></div>
+            </div>
+          </div>
+        <?php } ?>
+      <?php endforeach; ?>  
+    </div>
+    <div class="text-center">
+     <a href="<?= $block->getUrl('review-collection'); ?>" id="viewAllReviews" class="btn btn-dark btn-sm">VIEW ALL</a>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="leave-review-sec" id="leave-review-sec">
+  <div class="container">
+        <div class="section-title">Leave a review</div>
+    <form id="reviewform" action="<?php echo $block->getUrl('installationservice/index/installationservice') ?>" method="POST">
+      <div class="row">
+        <div class="col-xl-10 offset-xl-1">
+          <div class="sorttitle">How do you rate this product?</div>
+            <div class="mb-5" id="rating-stars">
+              <i class="far fa-star local" data-rating="1"></i>
+              <i class="far fa-star" data-rating="2"></i>
+              <i class="far fa-star" data-rating="3"></i>
+              <i class="far fa-star" data-rating="4"></i>
+              <i class="far fa-star" data-rating="5"></i>
+            </div>
+            <input type="hidden" name="rating" id="rating-input" value="0">
+          <div class="row">
+            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+              <label class="control-label" for="name-field">Name</label>
+              <input name="name" type="text" class="form-control" id="name-field" data-validate="{required:true}" placeholder="Name ">
+            </div>
+            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+              <label class="control-label" for="email-field">Email id:</label>
+              <input name="email" type="email" class="form-control" id="email-field" placeholder="Email id" data-validate="{required:true}">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="title-field">Title</label>
+            <input name="title" type="text" class="form-control" id="title-field" placeholder="Title" data-validate="{required:true}">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="message-field">Description</label>
+            <textarea name="description" class="form-control" id="message-field" rows="6" placeholder="Write your thought about the item" data-validate="{required:true}"></textarea>
+            <span class="limit-word">at least 30 words</span>
+          </div>
+
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+ 
+<script>
+  require(['jquery'],function($){
+$(document).ready(function() {
+     $(document).on('click', '#rating-stars svg', function(){
+    var rating = $(this).data('rating');
+    $('#rating-input').val(rating);
+    // Highlight the selected stars
+    $(this).addClass('filled').removeClass('empty');
+    $(this).prevAll().addClass('filled').removeClass('empty');
+    $(this).nextAll().removeClass('filled').addClass('empty');
+  });
+
+    // Initially hide all paragraphs except the first one
+    $('.tab-pane').not(':first').hide();
+
+    // Adding click event listeners to the tab links
+    $('.nav-link').on('click', function(event) {
+        event.preventDefault(); // Prevent default behavior of the link
+
+        // Hide all paragraphs
+        $('.tab-pane').hide();
+
+        // Show the corresponding paragraph
+        var targetId = $(this).attr('href');
+        $(targetId).show();
+    });
+    });
+});
+</script>
+
+<script>
+    require(['jquery', 'Magento_Ui/js/modal/modal'], function($, modal){
+        
+            var modalOptions = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Enquiry',
+                buttons: []
+            };
+
+            var popup = modal(modalOptions, $('#quote-modal'));
+            
+            $('#get-quote-btn').click(function(){
+                $('#quote-modal').modal('openModal');
+            });
+        
+    });
+</script>
+<script>
+  require([
+    'jquery',
+    'mage/validation'
+], function ($) {
+    $.validator.addMethod(
+        'validate-custom-phone', 
+        function (value, element) {
+            // Check if the value matches the allowed format and has a maximum length of 10 digits
+            return this.optional(element) || /^[0-9 ()+-]{10}$/.test(value);
+        }, 
+        $.mage.__('Please enter a valid 10-digit phone number.')
+    );
+
+    $('#quote-form').mage('validation', {});
+    $('#reviewform').mage('validation', {});
+
+});
+</script>
+<script>
+require(['jquery'], function($) {
+    $(document).ready(function() {
+        $('#reviewform').submit(function(event) {
+            if ($('#rating-input').val() == 0) {
+                event.preventDefault();
+                alert('This is a required field. Please rate the product.');
+            }
+        });
+    });
+});
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            var successMessage = document.querySelector('.message-success');
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        }, 5000); // 5 seconds
+    });
+</script>
+
+<script>
+  require(['jquery'],function($){
+$(document).ready(function(){
+  // Tab par click karne par
+  $(".nav-link").click(function(){
+    // Sabhi tabs se 'active' class hata denge
+    $(".nav-link").removeClass("active");
+    // Click ki gayi tab ko 'active' class denge
+    $(this).addClass("active");
+    
+    // Tab content ko hide karenge
+    $(".tab-pane").removeClass("show active");
+    // Click ki gayi tab ke corresponding content ko show karenge
+    var tabContentId = $(this).attr("href");
+    $(tabContentId).addClass("show active");
+  });
+});
+});
+</script>
+<script>
+  require(['jquery'],function($){
+$(document).ready(function() {
+    // Hide all reviews except the first two initially
+    $('.reviews-list:gt(1)').hide();
+
+    });
+});
+
+</script>
+
+
+
+<!-- <style>
+    #rating-stars {
+  font-size: 24px;
+}
+
+#rating-stars svg {
+  cursor: pointer;
+  color: #ccc;
+}
+
+#rating-stars svg:hover,
+#rating-stars i.fas {
+  color: #ffc107; /* Change color on hover or when selected */
+}
+#rating-stars svg {
+  width: 24px; /* Adjust as needed */
+  height: 24px; /* Adjust as needed */
+  cursor: pointer;
+}
+
+#rating-stars svg.empty path {
+  fill: #ccc; /* Color for empty stars */
+}
+
+#rating-stars svg.filled path {
+  fill: yellow; /* Color for filled stars */
+}
+
+
+/* Star rating styles */
+.star-ratings {
+    display: inline-block;
+    font-size: 0; /* Remove white space between inline-block elements */
+}
+
+.star-filled,
+.star-empty {
+    display: inline-block;
+    width: 16px; /* Adjust based on your icon size */
+    height: 16px; /* Adjust based on your icon size */
+    background-image: url('path/to/filled-star-icon.png'); /* Replace with your filled star icon */
+    background-size: cover;
+}
+
+.star-empty {
+    background-image: url('path/to/empty-star-icon.png'); /* Replace with your empty star icon */
+}
+</style> -->

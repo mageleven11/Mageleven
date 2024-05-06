@@ -1,0 +1,35 @@
+.mageleven-career .rsg-career-list {
+	padding: 15px;
+	border: 1px solid #ccc;
+	display: block;
+	margin-top: -1px;
+}
+.mageleven-career .rsg-career-list:nth-child(even){
+	background-color:#f1f1f1;
+}
+.mageleven-career .rsg-career-list:nth-child(odd){
+	background-color:#FAFAFA;
+}
+.mageleven-career .rsg-career-title {
+	font-weight:bold;
+	font-size:16px;
+	margin-bottom:5px;
+}
+.mageleven-career .rsg-career-time {
+	font-size:14px;
+	color:#666;
+	font-style:italic;
+}
+.mageleven-career .pager {
+	margin-top:20px;
+	display:flex;
+}
+.mageleven-career .toolbar-amount {
+	margin-right:20px;
+}
+.mageleven-career .rsg-career-desc {
+	margin-top:15px;
+}
+.mageleven-career a:hover {
+	text-decoration:none;
+}

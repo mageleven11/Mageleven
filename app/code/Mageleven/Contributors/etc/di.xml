@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Mageleven\Contributors\Api\Data\AllcontactsupporttypeInterface" type="Mageleven\Contributors\Model\Allcontactsupporttype" />
+    <preference for="Mageleven\Contributors\Api\AllcontactsupporttypeRepositoryInterface" type="Mageleven\Contributors\Model\AllcontactsupporttypeRepository" />
+    <virtualType name="AllcontributorsGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Mageleven\Contributors\Model\ResourceModel\Allcontributors\Collection</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AllcontactsupporttypeGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Mageleven\Contributors\Model\ResourceModel\Allcontactsupporttype\Collection</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AllcontactsupportGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Mageleven\Contributors\Model\ResourceModel\Allcontactsupport\Collection</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AllpartnerprogramGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Mageleven\Contributors\Model\ResourceModel\Allpartnerprogram\Collection</argument>
+        </arguments>
+    </virtualType>
+
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="contributors_allcontributors_listing_data_source" xsi:type="string">Mageleven\Contributors\Model\ResourceModel\Allcontributors\Grid\Collection</item>
+                <item name="contributors_allcontactsupporttype_listing_data_source" xsi:type="string">Mageleven\Contributors\Model\ResourceModel\Allcontactsupporttype\Grid\Collection</item>
+                <item name="contributors_allcontactsupport_listing_data_source" xsi:type="string">Mageleven\Contributors\Model\ResourceModel\Allcontactsupport\Grid\Collection</item>
+                <item name="contributors_allpartnerprogram_listing_data_source" xsi:type="string">Mageleven\Contributors\Model\ResourceModel\Allpartnerprogram\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+   
+
+    <type name="Mageleven\Contributors\Model\ResourceModel\Allcontributors\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageleven_contributors</argument>
+            <argument name="eventPrefix" xsi:type="string">mageleven_contributors_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">mageleven_contributors_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Mageleven\Contributors\Model\ResourceModel\Allcontributors</argument>
+        </arguments>
+    </type>
+    <type name="Mageleven\Contributors\Model\ResourceModel\Allcontactsupporttype\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">contact_support_types</argument>
+            <argument name="eventPrefix" xsi:type="string">mageleven_contactsupporttype_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">mageleven_contactsupporttype_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Mageleven\Contributors\Model\ResourceModel\Allcontactsupporttype</argument>
+        </arguments>
+    </type>
+    <type name="Mageleven\Contributors\Model\ResourceModel\Allcontactsupport\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">contact_support</argument>
+            <argument name="eventPrefix" xsi:type="string">mageleven_contactsupport_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">mageleven_contactsupport_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Mageleven\Contributors\Model\ResourceModel\Allcontactsupport</argument>
+        </arguments>
+    </type>
+    <type name="Mageleven\Contributors\Model\ResourceModel\Allpartnerprogram\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageleven_partnerprogram</argument>
+            <argument name="eventPrefix" xsi:type="string">mageleven_partnerprogram_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">mageleven_partnerprogram_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Mageleven\Contributors\Model\ResourceModel\Allpartnerprogram</argument>
+        </arguments>
+    </type>
+</config>

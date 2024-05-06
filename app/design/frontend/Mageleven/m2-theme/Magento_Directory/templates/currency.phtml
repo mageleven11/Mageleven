@@ -1,0 +1,49 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Currency switcher
+ *
+ * @var \Magento\Directory\Block\Currency $block
+ */
+?>
+<?php if ($block->getCurrencyCount() > 1) : ?>
+    <?php $currencies = $block->getCurrencies(); ?>
+    <?php $currentCurrencyCode = $block->getCurrentCurrencyCode(); ?>
+    <?php $block->getCurrentCurrencySymbol(); ?>
+    <?php $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : '' ?>
+    <?php
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currency = $storeManager->getStore()->getCurrentCurrency();
+$currency = $objectManager->create('Magento\Directory\Model\CurrencyFactory')->create()->load($currency['currency_code']); 
+    $currencySymbol = $currency->getCurrencySymbol(); 
+
+    ?>
+    <div class="switcher currency switcher-currency" id="switcher-currency<?= $block->escapeHtmlAttr($id) ?>">
+        <strong class="label switcher-label"> <span><?= $currencySymbol.$block->escapeHtml($currentCurrencyCode) ?> - <?= $currencies[$currentCurrencyCode] ? $block->escapeHtml($currencies[$currentCurrencyCode]) : '' ?></span></strong>
+        <div class="actions dropdown options switcher-options" style="display: none !important;">
+            <div class="action toggle switcher-trigger"
+                 id="switcher-currency-trigger<?= $block->escapeHtmlAttr($id) ?>"
+                 data-mage-init='{"dropdown":{}}'
+                 data-toggle="dropdown"
+                 data-trigger-keypress-button="true">
+                <strong class="language-<?= $block->escapeHtml($block->getCurrentCurrencyCode()) ?>">
+                    <span><?= $block->escapeHtml($currentCurrencyCode) ?> - <?= $currencies[$currentCurrencyCode] ? $block->escapeHtml($currencies[$currentCurrencyCode]) : '' ?></span>
+                </strong>
+            </div>
+            <ul class="dropdown switcher-dropdown" data-target="dropdown">
+                <?php foreach ($currencies as $_code => $_name) : ?>
+                    <?php if ($_code != $currentCurrencyCode) : ?>
+                        <li class="currency-<?= $block->escapeHtmlAttr($_code) ?> switcher-option">
+                            <a href="#" data-post='<?= /* @noEscape */ $block->getSwitchCurrencyPostData($_code) ?>'><?= $block->escapeHtml($_code) ?> - <?= $block->escapeHtml($_name) ?></a>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

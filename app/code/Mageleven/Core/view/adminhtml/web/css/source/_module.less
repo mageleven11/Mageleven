@@ -1,0 +1,74 @@
+/**
+ * Mageleven
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageleven.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageleven.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageleven
+ * @package     Mageleven_Core
+ * @copyright   Copyright (c) Mageleven (https://www.mageleven.com/)
+ * @license     https://www.mageleven.com/LICENSE.txt
+ */
+@import '_icons.less';
+
+.admin__menu .item-menu.parent.level-0 > a:before {
+  content: @icon-mageleven__content;
+  font-family: @icons-mageleven__font-name;
+  font-size: 2rem;
+  padding-top: .2rem;
+}
+
+.mageleven-extensions .title:before {
+  content: @icon-mageleven__content;
+  font-family: @icons-mageleven__font-name;
+  font-size: 1.3rem;
+  padding-top: .2rem;
+}
+
+.avada-extensions .title:before {
+  content: @icon-avada__content;
+  font-family: @icons-avada__font-name;
+  font-size: 1.7rem;
+  padding-top: .2rem;
+}
+
+ul[role="menu"] [data-ui-id^="menu-avada"] strong:before {
+  content: @icon-avada__content;
+  font-family: @icons-avada__font-name;;
+  font-size: 1.6rem;
+  margin-right: .8rem;
+}
+
+.row_mageleven_module_version {
+  .value {
+    vertical-align: bottom !important;
+
+    .special {
+      font-weight: 600;
+    }
+  }
+}
+
+#mageleven-module-messages {
+  max-width: 75%;
+  margin: 0 auto -35px;
+}
+
+[data-ui-id="menu-mageleven-core-menu"] strong:before {
+  display: none; /*no icon under Mageleven tab*/
+}
+
+ul[role="menu"] [data-ui-id^="menu-mageleven"] strong:before {
+  content: @icon-mageleven__content;
+  font-family: @icons-mageleven__font-name;;
+  font-size: 1.5rem;
+  margin-right: .8rem;
+}

@@ -1,0 +1,51 @@
+<?php
+$block = $block->getLayout()->createBlock('Custom\Installationservice\Block\Index\Totalreviews');
+$customReviews = $block->getCustomReviews();
+?>
+
+
+<section class="reviews-sec">
+  <div class="container">
+    <div class="section-title">Reviews</div>
+
+    <div class="reviews-listing">
+        <?php foreach ($customReviews as $review): ?>
+          <?php if($review->getStatus() == 1){ ?>
+          <div class="reviews-list">
+           <div class="reviews-list-left">
+              <div class="reviews-list-img">
+                     <?= $firstChar = substr($review->getName(), 0, 1); ?>
+              </div>
+            </div>
+
+            <div class="reviews-list-right">
+              <div class="reviews-list-col">
+                     
+                <div class="star-ratings">
+                    <?php
+                    $rating = $review->getRating();
+                    // Loop to generate filled stars
+                    for ($i = 1; $i <= 5; $i++) {
+                        if ($i <= $rating) {
+                            echo '<span class="star-filled"></span>';
+                        } else {
+                            echo '<span class="star-empty"></span>';
+                        }
+                    }
+                    ?>
+                </div>
+                <div class="reviews-list-name"><?= $review->getName(); ?></div>
+                <span class="reviews-title"><?php $list = explode(" ",$review->getCreatedAt()); 
+                 echo $list[0];
+                 //print_r($list);
+                ?></span>
+                
+              </div>
+              <div class="review_content"><?= $review->getDescription(); ?></div>
+            </div>
+          </div>
+        <?php } ?>
+      <?php endforeach; ?>  
+    </div>
+  </div>
+</section>

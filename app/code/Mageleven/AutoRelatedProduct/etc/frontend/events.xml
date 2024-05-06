@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © Mageleven (support@mageleven.com). All rights reserved.
+ * Please visit Mageleven.com for license details (https://mageleven.com/end-user-license-agreement).
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_generate_blocks_after">
+        <observer name="mageleven_autorelatedproduct_observer_frontend_layout_generateblocksafter_layout_generate_blocks_after" instance="Mageleven\AutoRelatedProduct\Observer\Frontend\Layout\GenerateBlocksAfter"/>
+    </event>
+</config>

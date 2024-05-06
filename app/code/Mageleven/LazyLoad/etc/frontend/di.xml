@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Mageleven (support@mageleven.com). All rights reserved.
+ * Please visit Mageleven.com for license details (https://mageleven.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\AbstractBlock">
+        <plugin name="mageleven_lazyload_lock"
+                type="Mageleven\LazyLoad\Plugin\BlockPlugin" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Cms\Block\Block">
+        <plugin name="mageleven_lazyload_lock"
+                type="Mageleven\LazyLoad\Plugin\BlockPlugin" sortOrder="1000"/>
+    </type>
+    <!-- Integration with Amasty_PageSpeedOptimizer -->
+    <type name="Amasty\PageSpeedOptimizer\Model\Output\LazyLoadProcessor">
+        <plugin name="mageleven_lazyLoad_plugin_amasty_pagespeedoptimizer_model_output_lazyloadprocessor_plugin"
+                type="Mageleven\LazyLoad\Plugin\Amasty\PageSpeedOptimizer\Model\Output\LazyLoadProcessorPlugin" sortOrder="1000"/>
+    </type>
+
+    <type name="Amasty\PageSpeedTools\Model\Image\ReplacerComposite">
+        <plugin name="mageleven_lazyLoad_plugin_amasty_imagege_replacer_composite_plugin"
+                type="Mageleven\LazyLoad\Plugin\Amasty\PageSpeedOptimizer\Model\Output\LazyLoadProcessorPlugin" sortOrder="10000"/>
+    </type>
+
+
+    <!-- Integration with Mageleven_WebP -->
+    <type name="Mageleven\WebP\Model\WebP">
+        <plugin name="mageleven_lazyLoad_plugin_for_webp"
+                type="Mageleven\LazyLoad\Plugin\Mageleven\WebP\Model\WebPPlugin" sortOrder="10000"/>
+    </type>
+
+    <type name="Mageleven\WebP\Api\HtmlParserInterface">
+        <plugin name="mageleven_lazyLoad_plugin_for_webp"
+                type="Mageleven\LazyLoad\Plugin\Mageleven\WebP\Api\HtmlParserInterfacePlugin" sortOrder="10000"/>
+    </type>
+
+
+    <type name="Mageleven\LazyLoad\Plugin\BlockPlugin">
+        <arguments>
+            <argument name="skipBlocks" xsi:type="array">
+                <item name="Magento\Catalog\Block\Product\Image\Interceptor" xsi:type="string">Magento\Catalog\Block\Product\Image\Interceptor</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

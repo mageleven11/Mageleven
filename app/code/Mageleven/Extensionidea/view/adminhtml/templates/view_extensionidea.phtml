@@ -1,0 +1,52 @@
+<?php $extension = $block->getExtensionideaDetail()->getData(); ?>
+<section class="admin__page-section order-view-account-information">
+   <div class="admin__page-section-content">
+      <div class="admin__page-section-item order-information">
+         <div class="admin__page-section-item-content">
+            <table class="admin__table-secondary order-information-table">
+               <tbody>
+                  <tr>
+                     <th>Date</th>
+                     <td><?php echo date("M d, Y h:i:s A",strtotime($extension['created_at'])); ?></td>
+                  </tr>
+                  <tr>
+                     <th>Name</th>
+                     <td><?php echo $extension['name'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Email</th>
+                     <td><?php echo $extension['email'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Skype/Mobile</th>
+                     <td><?php echo $extension['skype_mobile'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Type</th>
+                     <td><?php echo $extension['type'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Refrence Link</th>
+                     <td><?php echo $extension['refrence_link'] ?></td>
+                  </tr>
+                  <tr>
+                     <th>Attachment</th>
+                     <?php $_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); //instance of\Magento\Framework\App\ObjectManager
+                     $storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+                     $currentStore = $storeManager->getStore(); ?>
+                     <td>
+                        <?php if($extension['attachment']){ ?>
+                           <a href="<?php echo $currentStore->getBaseUrl().'pub/media/extensionidea/'.$extension['attachment']; ?>" download><?php echo $extension['attachment'] ?></a>
+                        <?php } ?>
+                     </td>
+                  </tr>
+                  <tr>
+                     <th>Message</th>
+                     <td><?php echo $extension['message'] ?></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</section>

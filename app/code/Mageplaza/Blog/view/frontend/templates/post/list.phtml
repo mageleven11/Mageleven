@@ -1,0 +1,129 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Blog
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+use Mageplaza\Blog\Block\Frontend;
+use Mageplaza\Blog\Model\Post;
+
+/** @var Frontend $block */
+?>
+<div class="post-list-content mpcss walkers start" id="mpblog-list-container">
+    <section class="new-blog-page">
+    <div class="container">
+      <div class="intro text-center">Mageleven blogs cover all aspects of Magento 2, including news and announcements, feature updates, Magento 2 extensions, general information, and insights. Users who are looking for all such information can get access here to the exclusive information.</div>
+
+    <?php $postCollection = $block->getPostCollection(); ?>
+     <div class="row">
+          <div class="col-xl-8 col-lg-8">
+                 <div class="new-blog-listing">
+                    <div class="row">
+                       <?php if ($postCollection && $postCollection->getSize()) { ?>
+        
+                        <!-- <div class="post-list-body <?php // $block->isGridView() ? /* @noEscape */ 'grid products-grid' : '' ?>"> -->
+                            <?php /** @var Post $post */
+                                foreach ($postCollection as $post) : ?>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                       <!--  <div class="item product product-item post-list-item 
+                                        <?php // $block->isGridView()    ? ' post-item-grid  ' : ' post-item-list  '; ?>"> -->
+                                            <div class="blog-list">
+                                                <?php if ($post->getImage()) : ?>
+                                                    <div class="post-image blog-list-img">
+                                                        <a href="<?= $block->escapeUrl($post->getUrl()) ?>">
+                                                            <img class="img-responsive"
+                                                                 src="<?= $block->escapeUrl($block->resizeImage($post->getImage(), '400x')) ?>"
+                                                                 alt="<?= $block->escapeHtml($post->getName()); ?>"/>
+                                                        </a>
+                                                    </div>
+                                                <?php endif; ?>
+                                                <div class="post-info-wraper blog-list-inner">
+                                                    <div class="blog-list-date">
+                                                        <?php echo $post['publish_date']; ?>
+                                                    </div>
+                                                    <div class="blog-list-title"><a href="<?php echo $block->escapeUrl($post->getUrl()) ?>"><?php echo $block->escapeHtmlAttr($post->getName())?></a>
+                                                    </div>
+                                                    <!-- <h2 class="mp-post-title">
+                                                        <a class="post-link-title" title="<?php // $block->escapeHtml($post->getName()); ?>"
+                                                           href="<?php // $block->escapeUrl($post->getUrl()) ?>">
+                                                            <?php // $block->escapeHtml($post->getName()) ?>
+                                                        </a>
+                                                    </h2> -->
+                                                    <!-- <div class="mp-post-info">
+                                                        <?php  // $block->getPostInfo($post) ?>
+                                                    </div> -->
+                                                   <!--  <div class="post-short-description">
+                                                        <p><?php // $block->maxShortDescription($post->getShortDescription()) ?></p>
+                                                    </div>
+                                                    <div class="mp-clearfix"></div>
+                                                    <div class="mp-post-meta-info mp-alignright">
+                                                        <div class="actions">
+                                                            <a class="mp-read-more" href="<?php // $block->escapeUrl($post->getUrl()) ?>"
+                                                               title="<?php // $block->escapeHtmlAttr(__('Read More')) ?>">
+                                                                <?= $block->escapeHtml(__('Read More')) ?>
+                                                            </a>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                       
+                            <?php } else{ ?>
+                                
+                                <?= '<div class="blog_noresult"><div class="matchedQuestions_image"></div><strong><span>No Results Found</span> There is no post at this moment.</strong></div>'; ?>
+                            <?php } ?>
+                            
+                    <!-- </div> -->
+
+                <!-- </div> -->
+            </div>
+             <?= $block->getPagerHtml() ?>
+        </div>
+    </div>
+                 <div class="col-xl-4 col-lg-4">
+                          <div class="blogsidebar">
+                            <div class="search-box">
+                                    <?php echo $this->getLayout()->createBlock("Mageplaza\Blog\Block\Sidebar\Search")->setTemplate("Mageplaza_Blog::sidebar/search.phtml")->toHtml();  ?>
+                            </div>
+                            <div class="blog-category">  
+                                 <?php echo $this->getLayout()->createBlock("Mageplaza\Blog\Block\Category\Widget")->setTemplate("Mageplaza_Blog::category/widget.phtml")->toHtml() ?>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+
+    </div>
+</section>
+        
+</div>
+<script>
+    require(['jquery'], function ($) {
+       // $('.limiter').css('float', 'right');
+
+        $("body").removeClass("page-layout-2columns-right");
+        $("body").addClass("page-layout-1column");
+        $(".sidebar-additional").remove();
+        $(".sidebar-main").remove();
+    });
+</script>
+

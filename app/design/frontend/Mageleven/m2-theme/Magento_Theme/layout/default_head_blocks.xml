@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="css/bootstrap.css" />
+        <css src="css/font-awesome.css" />
+        <css src="css/animate.css" />
+        <css src="css/latest.css" />
+        <css src="css/owl.carousel.min.css" />
+        <css src="css/custom.css" />
+        <link rel="stylesheet" src="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900" src_type="url"  />
+        <link src="js/wow.min.js"/>
+        <link src="js/woweffect.js"/>
+        <link src="js/fontawesome-all.js"/>
+    </head>
+</page>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Mageleven_Discountrule::mageleven" title="Mageleven" sortOrder="51">
+                    <resource id="Mageleven_Discountrule::discountrule_alldiscountrule" title="All Discountrule" sortOrder="10">
+						<resource id="Mageleven_Discountrule::save" title="Save Discountrule" translate="title" sortOrder="10" />
+						<resource id="Mageleven_Discountrule::discountrule_delete" title="Delete Discountrule" translate="title" sortOrder="20" />
+					</resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Mageleven_Discountrule::discountrule_config" title="Mageleven Discountrule" translate="title"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

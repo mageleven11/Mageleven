@@ -1,0 +1,53 @@
+1. cancel Order 
+URL : https://github.com/magepow/magento-2-cancel-order
+
+2. Infinite Scroll 
+URL : https://github.com/magepow/magento-2-infinite-scroll
+
+3. Slick Carousel 
+URL : https://github.com/swissup/module-slick-carousel
+
+4. Image Optimizer 
+URL : https://www.apptrian.com/image-optimizer-for-magento
+
+5. Auto Currency 
+URL : https://github.com/chapagain/auto-currency-switcher-2
+
+6. Extrafee
+URL : https://github.com/magecomp/magento2-extra-fee
+
+7. Better Popup 
+URL : https://github.com/mageplaza/magento-2-better-popup
+
+8. Banner Slider 
+URL : https://github.com/mageplaza/magento-2-banner-slider
+
+9. Shop Brand 
+URL : https://github.com/magepow/magento-2-shop-by-brand
+ 
+10. Testimonial 
+URL : https://github.com/magepow/magento-2-testimonial
+
+11. Delete 
+URL : https://www.magetop.com/magento-2-delete-orders-extension.html
+
+12. Html Sitemap
+URL:  https://bsscommerce.com/magento-2-dynamic-html-sitemap-extension.html
+
+13. AutoRelated 
+URL : https://magefan.com/magento-2-automatic-related-products
+
+14. lazy Load
+URL : https://magefan.com/magento-2-image-lazy-load-extension
+
+15. Social Login
+URL: https://github.com/mageplaza/magento-2-social-login
+
+16. Auto Cancel 
+URL: https://www.sparsh-technologies.com/magento-extensions/magento-2-auto-cancel-order-extension
+
+17. Buy Now 
+URL: https://github.com/mageprince/magento2-buynow
+
+18. Callforprice
+URL: https://github.com/Darshanmodi1427/Darsh_Callforprice

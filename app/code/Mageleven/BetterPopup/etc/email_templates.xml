@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageleven
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageleven.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageleven.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageleven
+ * @package     Mageleven_BetterPopup
+ * @copyright   Copyright (c) Mageleven (https://www.mageleven.com/)
+ * @license     https://www.mageleven.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="mageleven_betterpopup_template" label="Email Template" file="betterpopup_template.html" type="html" module="Mageleven_BetterPopup" area="frontend"/>
+</config>

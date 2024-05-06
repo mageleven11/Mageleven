@@ -1,0 +1,39 @@
+	<!-- banner -->
+<section class="service-banner blogdetail-header careers-banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 wow fadeInUp">
+				<div class="slidcontent text-center">
+					<h1 class="upcase">Career</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- careers mid -->
+<section class="jointeam">
+	<div class="container">
+		<div class="row">
+			<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('career-detail-join-team')->toHtml(); ?>
+		</div>
+	</div>
+</section>
+<section class="single-post">
+  <div class="container">
+    <div class="single-post-inner">
+    	<?php $career = $this->getCareer() ?>
+      <h2><?php echo $career->getTitle() ?></h2>
+      <div class="rsg-career-desc"><?php echo $career->getDescription() ?></div>
+    </div>
+  </div>
+</section>
+<!-- join our team -->
+<div class="joinourteam">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('career-join-our-team')->toHtml(); ?>	
+			</div>
+		</div>
+	</div>
+</div>

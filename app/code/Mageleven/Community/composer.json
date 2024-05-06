@@ -1,0 +1,17 @@
+{
+    "name": "mageleven/module-community",
+    "description": "",
+    "require": {
+        "mageleven/module-admin-user-guide" : ">=2.0.3"
+    },
+    "version": "2.1.17",
+    "type": "magento2-module",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Mageleven\\Community\\": ""
+        }
+    }
+}

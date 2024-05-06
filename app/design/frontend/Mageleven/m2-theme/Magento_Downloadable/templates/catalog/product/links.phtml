@@ -1,0 +1,38 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php /* @var $block \Magento\Downloadable\Block\Catalog\Product\Links */ ?>
+<?php $_linksPurchasedSeparately = $block->getLinksPurchasedSeparately(); ?>
+<?php if ($block->getProduct()->isSaleable() && $block->hasLinks()) :?>
+    <?php $_links = $block->getLinks(); ?>
+    <?php $_linksLength = 0; ?>
+    <?php $_isRequired = $block->getLinkSelectionRequired(); ?>
+    <legend class="legend links-title"><span><?= $block->escapeHtml($block->getLinksTitle()) ?></span></legend><br>
+    <div class="walker field downloads<?php //if ($_isRequired) { echo ' required'; } ?><?php //if (!$_linksPurchasedSeparately) { echo ' downloads-no-separately'; } ?>">
+        <!-- <label class="label"><span><?php // echo $block->escapeHtml($block->getLinksTitle()) ?></span></label> -->
+        <div class="control" id="downloadable-links-list"
+             data-mage-init='{"downloadable":{
+                 "linkElement":"input:checkbox[value]",
+                 "allElements":"#links_all",
+                 "config":<?= $block->escapeHtmlAttr($block->getJsonConfig()) ?>}
+             }'
+             data-container-for="downloadable-links">
+          
+            <?php if ($_linksPurchasedSeparately && $_linksLength > 1) : ?>
+                <div class="field choice downloads-all">
+                    <input type="checkbox"
+                           data-notchecked="<?= $block->escapeHtmlAttr(__('Select all')) ?>"
+                           data-checked="<?= $block->escapeHtmlAttr(__('Unselect all')) ?>"
+                           id="links_all" />
+                    <label class="label" for="links_all"><span><?= $block->escapeHtml(__('Select all')) ?></span></label>
+                </div>
+            <?php endif; ?>
+        </div>
+        <?php if ($_isRequired) : ?>
+            <span id="links-advice-container"></span>
+        <?php endif;?>
+    </div>
+<?php endif; ?>

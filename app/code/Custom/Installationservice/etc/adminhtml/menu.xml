@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Custom_Installationservice::parent" title="Installationservice" module="Custom_Installationservice" sortOrder="100" resource="Custom_Installationservice::parent"/>
+        <add id="Custom_Installationservice::index" title="Installationservice Index" module="Custom_Installationservice" sortOrder="10" action="installationservice/index" resource="Custom_Installationservice::index" parent="Custom_Installationservice::parent"/>
+		<add id="Custom_Installationservice::customreview" title="Installationservice Customreview" module="Custom_Installationservice" sortOrder="20" parent="Custom_Installationservice::parent" action="installationservice/customreview" resource="Custom_Installationservice::customreview"/>
+
+    </menu>
+</config>

@@ -1,0 +1,190 @@
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
+ <?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+// phpcs:disable Generic.Files.LineLength.TooLong
+
+/** @var \Magento\Contact\Block\ContactForm $block */
+/** @var \Magento\Contact\ViewModel\UserDataProvider $viewModel */
+
+$viewModel = $block->getViewModel();
+?>
+<section class="contact-page">
+    <div class="container">
+        <div class="row gx-5">
+          <div class="col-xl-6 col-lg-6">
+<form class="form contact form-design"
+      action="<?= $block->escapeUrl($block->getFormAction()) ?>"
+      id="contact-form"
+      method="post"
+      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <div class="form-dtitle">Contact Us</div>
+        <p class="form-p">
+            <?= $block->escapeHtml(__('Thank you for reaching out to Magelevan for premium Magento 2 extensions and services.')) ?>
+        </p>
+        <div class="form-group field name required">
+            <label class="control-label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
+            <div class="control">
+                <input name="name"
+                       id="name"
+                       title="<?= $block->escapeHtmlAttr(__('Name')) ?>"
+                       value="<?= $block->escapeHtmlAttr($viewModel->getUserName()) ?>"
+                       class="input-text form-control"
+                       type="text"
+                       data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="form-group field email required">
+            <label class="control-label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+            <div class="control">
+                <input name="email"
+                       id="email"
+                       title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                       value="<?= $block->escapeHtmlAttr($viewModel->getUserEmail()) ?>"
+                       class="input-text form-control"
+                       type="email"
+                       data-validate="{required:true, 'validate-email':true}"
+                       data-mage-init='{"mage/trim-input":{}}'
+                />
+            </div>
+        </div>
+     <div class="form-group field telephone required">
+    <label class="control-label" for="telephone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
+    <div class="control">
+        <input name="telephone"
+               id="telephone"
+               title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
+               value="<?= $block->escapeHtmlAttr($viewModel->getUserTelephone()) ?>"
+               class="input-text form-control"
+               type="tel"
+               data-validate="{required:true, 'validate-length':true, 'validate-digits':true, 'validate-length':'10'}"
+        />
+        <input type="hidden" id="hidden-dial-code" name="hiddenDialCode">
+    </div>
+</div>
+        <div class="form-group field comment required">
+            <label class="control-label" for="comment">
+                <span><?= $block->escapeHtml(__('What’s on your mind?')) ?></span>
+            </label>
+            <div class="control">
+                <textarea name="comment"
+                          id="comment"
+                          title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>"
+                          class="input-text form-control"
+                          cols="5"
+                          rows="3"
+                          data-validate="{required:true}"
+                ><?= $block->escapeHtml($viewModel->getUserComment()) ?></textarea>
+            </div>
+        </div>
+        <?= $block->getChildHtml('form.additional.info') ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
+                <span><?= $block->escapeHtml(__('Submit')) ?></span>
+            </button>
+        </div>
+    </div>
+</form>
+</div>
+<div class="col-xl-6 col-lg-6">
+                <!-- Box Start -->
+                <div class="flex-box">
+                    <div class="flex-box-img">
+                       <img src="<?php echo $this->getUrl().'media/cms/new/support.png'; ?>" alt="Product support">
+                    </div>
+                    <div class="flex-box-text">
+                        <div class="flex-box-title">Product support related queries? <strong>Create a support ticket</strong></div>
+                    </div>
+                </div>
+                <!-- Box End -->
+
+                <div class="primary-title">Company Info</div>
+                <div class="contact-detail">
+                    <a href="mailto:info@mageleven.com">
+                        <?xml version="1.0" ?><svg version="1.1"height="22" width="22" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="info"/><g id="icons"><path d="M20,3H4C1.8,3,0,4.8,0,7v10c0,2.2,1.8,4,4,4h16c2.2,0,4-1.8,4-4V7C24,4.8,22.2,3,20,3z M21.6,8.8l-7.9,5.3   c-0.5,0.3-1.1,0.5-1.7,0.5s-1.2-0.2-1.7-0.5L2.4,8.8C2,8.5,1.9,7.9,2.2,7.4C2.5,7,3.1,6.9,3.6,7.2l7.9,5.3c0.3,0.2,0.8,0.2,1.1,0   l7.9-5.3c0.5-0.3,1.1-0.2,1.4,0.3C22.1,7.9,22,8.5,21.6,8.8z" id="email"/></g></svg>
+                        <span>info@mageleven.com</span>
+                    </a>
+                </div>
+                <div class="contact-detail">
+                    <a href="tel:+1-205-525-9914">
+                        <?xml version="1.0" ?><svg height="25" width="25" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h48v48H0z" fill="none"/><path d="M13.25 21.59c2.88 5.66 7.51 10.29 13.18 13.17l4.4-4.41c.55-.55 1.34-.71 2.03-.49C35.1 30.6 37.51 31 40 31c1.11 0 2 .89 2 2v7c0 1.11-.89 2-2 2C21.22 42 6 26.78 6 8c0-1.11.9-2 2-2h7c1.11 0 2 .89 2 2 0 2.49.4 4.9 1.14 7.14.22.69.06 1.48-.49 2.03l-4.4 4.42z"/></svg>
+                        <span>+1-205-525-9914</span>
+                    </a>
+                </div>
+                <div class="contact-detail">
+                    <?xml version="1.0" ?><svg height="25" width="25" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4c-7.73 0-14 6.27-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.73-6.27-14-14-14zm0 19c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/><path d="M0 0h48v48H0z" fill="none"/></svg>
+                    <address>30 N Gould St, STE R Sheridan, WY, 82801, USA</address>
+                </div>
+
+                <div>
+                     <img src="<?php echo $this->getUrl().'media/cms/new/certified.png'; ?>" alt="certified" style="margin: 0px 5px 5px 0px; width: 70px;">
+                </div>
+
+                <div class="primary-title">Social Links</div>
+                <div class="social-list">
+                    <li><a href="https://www.facebook.com/mageleven" target="_blank"><svg class="svg-inline--fa fa-facebook-f fa-w-9" aria-hidden="true" data-prefix="fab" data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M76.7 512V283H0v-91h76.7v-71.7C76.7 42.4 124.3 0 193.8 0c33.3 0 61.9 2.5 70.2 3.6V85h-48.2c-37.8 0-45.1 18-45.1 44.3V192H256l-11.7 91h-73.6v229"></path></svg><!-- <i class="fab fa-facebook-f"></i> --></a></li>
+          <li><a href="https://twitter.com/mage11official" target="_blank"><svg class="svg-inline--fa fa-twitter fa-w-16" aria-hidden="true" data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg><!-- <i class="fab fa-twitter"></i> --></a></li>
+          <li><a href="https://www.linkedin.com/company/mageleven-official" target="_blank"><svg class="svg-inline--fa fa-linkedin-in fa-w-14" aria-hidden="true" data-prefix="fab" data-icon="linkedin-in" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M100.3 480H7.4V180.9h92.9V480zM53.8 140.1C24.1 140.1 0 115.5 0 85.8 0 56.1 24.1 32 53.8 32c29.7 0 53.8 24.1 53.8 53.8 0 29.7-24.1 54.3-53.8 54.3zM448 480h-92.7V334.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V480h-92.8V180.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V480z"></path></svg><!-- <i class="fab fa-linkedin-in"></i> --></a></li>
+                   <!--  <a href="#" target="_blank"><img src="<?php //echo $this->getUrl().'media/cms/new/facebook-icon.svg'; ?>"  alt="facebook" width="22" height="22"></a>
+                    <a href="#" target="_blank"><img src="<?php //echo $this->getUrl().'media/cms/new/twitter-icon.svg'; ?>" alt="twitter" width="22" height="22"></a>
+                    <a href="#" target="_blank"><img src="<?php //echo $this->getUrl().'media/cms/new/linkedin-icon.svg'; ?>" alt="linkedin" width="22" height="22"></a>
+                    <a href="#" target="_blank"><img src="<?php //echo $this->getUrl().'media/cms/new/youtube-icon.svg'; ?>" alt="youtube" width="22" height="22"></a> -->
+                </div>
+
+            </div>
+
+        </div>
+      </div>
+    </section>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Customer/js/block-submit-on-send": {
+                "formId": "contact-form"
+            }
+        }
+    }
+</script>
+  <script>
+  // Initialize the international telephone input
+  document.addEventListener('DOMContentLoaded', function () {
+    var input = document.querySelector("#telephone");
+    var iti = window.intlTelInput(input, {
+      separateDialCode: true,
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/utils.js"
+    });
+
+    // Set the default country
+    iti.setCountry("US"); // Set your desired default country code
+  });
+</script>
+<script>
+  require(['jquery'],function($){
+    $(document).ready(function () {
+       // Function to update hidden input value
+        function updateHiddenInput() {
+            // Get the selected dial code
+            var selectedFlag = $(".iti__selected-flag");
+            var dialCode = selectedFlag.find(".iti__selected-dial-code").text().trim();
+
+            // Set the dial code to the hidden input value
+            $("#hidden-dial-code").val(dialCode);
+        }
+
+        // Handle keypress event on the number field and click event on flag container
+        $('#telephone, .iti__flag-container').on('input click', function () {
+            updateHiddenInput();
+        });
+      });
+    });
+</script>

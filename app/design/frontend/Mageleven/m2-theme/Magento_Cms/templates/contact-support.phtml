@@ -1,0 +1,113 @@
+<section class="service-banner">
+   <div class="container">
+      <div class="row">
+         <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('contact-support-banner')->toHtml(); ?>
+      </div>
+   </div>
+</section>
+<?php
+	$helper = $this->helper('Mageleven\Contributors\Helper\Data');
+    $types = $helper->getContactSupportType();
+
+    $faqs = $helper->getContactSupportFaq();
+    
+?>
+
+<!-- careers mid -->
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8">
+    			<div class="getsupport">
+    				<h2>HOW TO GET SUPPORT</h2>
+    				<form class="form contact" action="<?php echo $this->getUrl('contributors/index/contactsave', ['_secure' => true]);?>" id="custom-form" method="post" data-hasrequired="<?php  echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}' style="width:100%; float: none;" enctype="multipart/form-data" >
+	    				<div class="row">
+	    					<div class="col-lg-6">
+	    						<div class="form-group">
+	    							<label>Your Name</label>
+	    							<input type="text" name="name" class="form-control" required>
+	    						</div>
+	    					</div>
+	    					<div class="col-lg-6">
+	    						<div class="form-group">
+	    							<label>Your Email</label>
+	    							<input type="email" class="form-control" name="email" required >
+	    						</div>
+	    					</div>
+	    					<div class="col-lg-12">
+	    						<div class="form-group">
+	    							<label>Please Select Request Type</label>
+	    							<select class="form-control" name="type_id" required>
+	    								<option value="">Select</option>
+	    								<?php foreach ($types as $type) {  ?>
+	    									<option value="<?php echo $type->getData('cs_id'); ?>"><?php echo $type->getData('type'); ?></option>
+	    								<?php } ?>
+	    							</select>
+	    							<small class="form-text">Choosing a correct request type will help us to improve handling time</small>
+	    						</div>
+	    					</div>
+	    					<div class="col-lg-12">
+	    						<div class="form-group text-center">
+	    							<button type="submit" title="<?php  echo __('Submit') ?>" class="btn btn-primary">
+				                        <span><?php  echo __('Submit') ?></span>
+				                    </button>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</form>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="callus">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-12">
+            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('contact-support-callus')->toHtml(); ?>
+         </div>
+      </div>
+   </div>
+</div>
+   
+
+<!-- FAQ -->
+<div class="faqs askquestion wow fadeInUp">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2>Frequently Asked Questions (FAQs)</h2>
+			</div>
+		</div>
+			
+		<div class="accordion" id="accordionExample">
+			<div class="row">
+				<?php $str_counts = array("One",'Two','Three','Four','Five'.'Six','Seven','Eight','Nine','Ten')  ?>
+				<?php $i=0; ?>
+				<div class="col-lg-6">
+				<?php foreach($faqs as $faq){  ?>
+					
+						<div class="card">
+
+						    <div class="card-header" id="heading<?php echo $i; ?>">
+						      <h5 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="false" aria-controls="collapse<?php echo $i; ?>">
+						          <?php echo $faq->getData('faq_question'); ?>
+						      </h5>
+						    </div>
+
+						    <div id="collapse<?php echo $i; ?>" class="collapse" aria-labelledby="heading<?php echo $i; ?>" data-parent="#accordionExample">
+						      <div class="card-body">
+						        <?php echo $faq->getData('faq_answer'); ?>
+						      </div>
+						    </div>
+						</div>
+						<?php if($i==3){ ?> 
+						</div>
+						<div class="col-lg-6">
+						<?php } ?>
+					
+				<?php $i++; } ?>
+				</div>
+			</div>						
+		</div>    				
+	</div>
+</div>
+

@@ -1,0 +1,101 @@
+.admin__menu {
+    
+    // Mageleven Community Menu Lvl-0
+    #menu-mageleven-community-elements {
+        > a {
+            &:before {
+                content: '';
+                background: url("https://mageleven.com/media/magelevenme.png") no-repeat center;
+                background-size: 26px;
+                margin: 0 auto .3rem auto;
+            }
+            &:hover {
+                &:before {
+                    background: url("https://mageleven.com/media/magelevenme.png") no-repeat center;
+                    background-size: 26px;
+                    margin: 0 auto .3rem auto;
+                }
+            }
+        }
+    }
+
+    // Content
+    [data-ui-id^=menu-magento-].level-0 {
+        [data-ui-id^=menu-mageleven-].level-1 {
+            .submenu-group-title {
+                span {
+                    display: flex;
+                    justify-content: space-between;
+                    &:after {
+                        content: '';
+                        background: url("https://mageleven.com/media/magelevenme.png") no-repeat center;background-size: contain;
+                        display: inline-block;
+                        width: 20px;
+                        min-width: 20px;
+                        height: 22px;
+                        margin-left: 15px;
+                        vertical-align: middle;
+                        padding: 0;
+                    }
+                }
+            }
+            .submenu-group-title {
+                + .submenu {
+                    [data-ui-id^=menu-mageleven].level-2 {
+                        span {
+                            &:after {
+                                content: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    [data-ui-id^=menu-magento-].level-0 {
+        [data-ui-id^=menu-magento-].level-1 {
+            [data-ui-id^=menu-mageleven-].level-2 {
+                span {
+                    display: flex;
+                    justify-content: space-between;
+                    &:after {
+                        content: '';
+                        background: url("https://mageleven.com/media/magelevenme.png") no-repeat center;background-size: contain;
+                        display: inline-block;
+                        width: 20px;
+                        min-width: 20px;
+                        height: 22px;
+                        margin-left: 15px;
+                        vertical-align: middle;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+
+// Store Configuration Mageleven Extension
+.config-nav .mageleven-tab .admin__page-nav-title:before {
+    content: '';
+    background: url("https://mageleven.com/media/magelevenme.png") no-repeat 0 0;background-size: contain;
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 11px;
+}
+.config-nav .mageleven-tab .admin__page-nav-title strong {
+    margin-left: 40px;
+}
+
+.accordion .form-inline .config .data-grid .mageleven-section td {
+    padding: 1rem;
+}
+.accordion .form-inline .config .mageleven-section tr:nth-child(even) td {
+    background-color: #f5f5f5;
+}

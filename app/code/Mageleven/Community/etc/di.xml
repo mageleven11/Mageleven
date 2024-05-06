@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Mageleven (support@mageleven.com). All rights reserved.
+ * Please visit Mageleven.com for license details (https://mageleven.com/end-user-license-agreement).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mageleven\Community\Api\GetModuleVersionInterface" type="Mageleven\Community\Model\GetModuleVersion" />
+    <preference for="Mageleven\Community\Api\GetCategoryByProductInterface" type="Mageleven\Community\Model\GetCategoryByProduct"/>
+</config>

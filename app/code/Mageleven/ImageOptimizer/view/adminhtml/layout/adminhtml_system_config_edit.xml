@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  Mageleven
+ * @package   Mageleven_ImageOptimizer
+ * @author    Mageleven
+ * @copyright Copyright (c) Mageleven (http://www.mageleven.com)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Mageleven_ImageOptimizer::css/mageleven_imageoptimizer.css" media="all"/>
+    </head>
+</page>

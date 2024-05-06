@@ -1,0 +1,52 @@
+<?php
+
+$products = $block->getProducts();
+$helper = $this->helper('Itheavens\Fanpage\Helper\Data');
+
+?>
+
+
+<h3 class="mt-2">Your Bundle</h3>
+              <hr>
+              <ul class="scroll-list bundle list-bundle">
+                <?php
+                $price = 0;
+              foreach ($products as $product) {
+                 $imageUrl = $helper->getImageUrl($product);
+                 ?>
+
+
+                  <li>
+                    <a href="javascript:;">
+                      <img src="<?php echo $imageUrl; ?>" alt="">
+                      <p><?php echo $product->getName(); ?></p>
+                      <?php $price = $price+$product->getFinalPrice(); ?>
+                      <div class="price discount_producta" data-id="<?php echo $product->getId(); ?>"><?php echo $helper->getFormattedPrice($product->getFinalPrice()); ?></div>
+                    </a>
+                  </li>
+                  
+                <?php  
+                }
+                ?>
+              </ul>
+              <h3 class="mt-4">Total</h3>
+              <hr>
+              <table class="table">
+                <tr>
+                  <td>Subtotal</td>
+                  <td align="right"><?php echo $helper->getFormattedPrice($price); ?></td>
+                </tr>
+               <tr>
+                                <?php $discount_percent = $helper->getDiscountByRule($price); ?>
+                  <td>Your discount <sup><?php echo $discount_percent ?>%</sup></td>
+                  <td align="right">
+                                    <?php $final_discount_price =  ($discount_percent/100)*$price; ?>
+                                    <strong><?php echo $helper->getFormattedPrice($final_discount_price); ?></strong></td>
+                </tr>
+                <tr>
+                  <td>Grand Total </td>
+                                <?php $grand_price = $price-$final_discount_price; ?>
+                  <td align="right"><strong><?php echo $helper->getFormattedPrice($grand_price); ?></strong></td>
+                </tr>
+              </table>
+              <a href="javascript:;" class="btn btn-primary d-block bundle_addToCart">Add To Cart and Checkout</a>

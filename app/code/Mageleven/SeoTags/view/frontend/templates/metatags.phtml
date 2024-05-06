@@ -1,0 +1,99 @@
+<?php 
+$Checkhomepage = $block->isHomePage(); ?>
+<?php if($Checkhomepage){ ?>
+<meta name="author" content="Mageleven"/>
+<meta content="Business" name="classification" />
+<meta content="Global" name="distribution" />
+<meta name="document-type" content="Public" />
+<meta name="document-distribution" content="Global" />
+<meta name="document-rating" content="Safe for Kids" />
+<meta name="revisit-after" content="3 days" />
+<meta name="geo.placename" content="Global" />
+<meta name="rating" content="General" />
+<meta name="audience" content="All" />
+
+<meta property="og:site_name" content="Mageleven">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Magento 2 Extensions Services Provider Company - Mageleven">
+<meta property="og:description" content="Transform your Magento 2 store with our cutting-edge extensions and expert services. Elevate performance, and enhance user experience. Choose Mageleven!">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mageleven.com/">
+<meta property="og:image" content="https://mageleven.com/static/frontend/Mageleven/m2-theme/en_US/images/logo.png">
+<meta property="og:type" content="article" />
+
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:title" content="Magento 2 Extensions Services Provider Company - Mageleven" />
+<meta name="twitter:creator" content="@mageleven" />
+<meta name="twitter:site" content="@mageleven" />
+<meta property="twitter:description" content="Transform your Magento 2 store with our cutting-edge extensions and expert services. Elevate performance, and enhance user experience. Choose Mageleven!" />
+<meta name="twitter:image" content="https://mageleven.com/static/frontend/Mageleven/m2-theme/en_US/images/logo.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mageleven",
+  "legalName": "Mageleven",
+  "url": "https://mageleven.com/",
+  "logo": "https://mageleven.com/static/frontend/Mageleven/m2-theme/en_US/images/logo.png",
+  "description": "Transform your Magento 2 store with our cutting-edge extensions and expert services. Elevate performance, and enhance user experience. Choose Mageleven!",
+  "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "30 N Gould St, STE R Sheridan, WY, 82801, USA",
+  "addressLocality": "Sheridan",
+  "addressRegion": "Wyoming",
+  "postalCode": "82801",
+  "addressCountry": "US"
+  },
+  "contactPoint": {
+  "@type": "ContactPoint",
+  "telephone": "+1-205-525-9914",
+  "contactType": "customer service"
+  },
+  "email": "info@mageleven.com",
+  "sameAs": [
+  "https://www.facebook.com/mageleven",
+  "https://twitter.com/mage11official",
+  "https://www.linkedin.com/company/mageleven-official"
+  ]
+}
+</script>
+<?php } ?>
+<?php if($block->getCurrectAction()){
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$currentProduct = $block->getProduct();
+$imageUrl = $this->getUrl()."media/catalog/product".$currentProduct->getThumbnail();
+$productUrl = $this->getUrl().$currentProduct->getUrlKey().".html";
+$loadprice = $block->getPricewithoutCurrency($currentProduct);
+$currency = $objectManager->get('Magento\Directory\Model\Currency');
+$price = $currentProduct->GetFinalPrice();
+ $price =  $currency->format($price, ['display'=>\Zend_Currency::NO_SYMBOL], false); 
+?>
+
+<!-- Product Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "<?php echo $currentProduct->getName();  ?>",
+  "image": "<?php echo $imageUrl; ?>",
+  "description": "<?php echo strip_tags($currentProduct->getShortDescription()); ?>",
+  "brand": {
+    "@type": "Brand",
+    "name": "Mageleven"
+  },
+  "sku": "<?php echo $currentProduct->getSku(); ?>",
+  "offers": {
+    "@type": "Offer",
+    "url": "<?php echo $productUrl; ?>",
+    "priceCurrency": "USD",
+    "price": "<?php echo $price; ?>",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "<?php echo $block->getReviewRatting(); ?>",
+    "ratingCount": "<?php echo $block->getTotalReviews() ?>"
+  }
+}
+</script>
+<?php } ?>

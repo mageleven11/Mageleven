@@ -1,0 +1,70 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Blog
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+use Mageplaza\Blog\Block\Category\Widget;
+
+/** @var Widget $block */
+$tree = $block->getTree();
+if ($tree) : ?>
+    <div class="mp-sidebar mpcss">
+        <div class="row">
+            <div class="block-title col-xs-12 sidebar-categories">
+                <p class="block-mp-sidebar-heading" role="heading" aria-label="2"><?= $block->escapeHtml(__('Categories')) ?></p>
+            </div>
+            <div class="col-xs-12">
+                <ul class="menu-categories">
+                <?= $block->getCategoryTreeHtml($tree) ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        require(['Mageplaza_Blog/js/categorytree'], function () {
+        });
+    </script>
+<?php endif; ?>
+<script>
+    require(['jquery'],function($){
+     // Get the text inside data-ui-id="page-title-wrapper"
+    var pageTitle = $('[data-ui-id="page-title-wrapper"]').text().trim().toLowerCase();
+
+    // Assuming $customvariable contains the HTML string of category names
+    var $customvariable = '<?php echo $block->getCategoryTreeHtml($tree); ?>';
+
+    // Replace &amp; with &
+    $customvariable = $customvariable.replace(/&amp;/g, '&');
+
+    // Convert custom variable to lowercase and trim
+    var customVariableLower = $customvariable.toLowerCase();
+
+    // Find all category elements
+    $('.category-item').each(function() {
+        // Get the text of the category
+        var categoryText = $(this).find('.list-categories').text().trim().toLowerCase();
+        
+        // Check if the category text matches the page title
+        if (categoryText === pageTitle) {
+            // Add the active class to the <a> tag within the matched category
+            $(this).find('.list-categories').addClass('active');
+        }
+    });
+    })
+</script>

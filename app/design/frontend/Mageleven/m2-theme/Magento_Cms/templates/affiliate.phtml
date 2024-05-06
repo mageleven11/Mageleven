@@ -1,0 +1,72 @@
+<section class="service-banner">
+	
+			<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('affiliate-banner')->toHtml(); ?>
+	</section>
+<section class="you-know wow fadeInUp">
+      <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('affiliate-could-earn-cash')->toHtml(); ?>
+  
+</section>
+<section class="howitwork wow fadeInUp">
+  <div class="container">
+    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('affiliate-how-it-work')->toHtml(); ?>
+  </div>
+</section>
+<section class="howtostart wow fadeInUp">
+  <div class="container">
+      <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('affiliate-how-to-start')->toHtml(); ?>
+    </div>
+</section>
+<?php 
+	$helper = $this->helper('Mageleven\Contributors\Helper\Data');
+    $faqs = $helper->getAffiliateFaq();
+?>
+<div class="faqs askquestion wow fadeInUp">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2>Frequently Asked Questions (FAQs)</h2>
+			</div>
+		</div>
+		<div class="accordionsss" id="accordionExample">
+			<div class="row">
+				<?php $str_counts = array("One",'Two','Three','Four','Five'.'Six','Seven','Eight','Nine','Ten')  ?>
+				<?php $i=0; ?>
+				<div class="col-lg-6">
+				<?php foreach($faqs as $faq){  ?>
+						<?php if($i == 0) : ?>
+							<div class="card">
+							    <div class="card-header" id="headingOne">
+							      <h5 class="mb-0 collapsed custom_card" data-target="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse<?php echo $i; ?>">
+							          <?php echo $faq->getData('faq_question'); ?>
+							      </h5>
+							    </div>
+							    <div id="collapse<?php echo $i; ?>" class="collapse show" aria-labelledby="heading<?php echo $i; ?>" data-parent="#accordionExample">
+							      <div class="card-body">
+							        <?php echo $faq->getData('faq_answer'); ?>
+							      </div>
+							    </div>
+							</div>
+						<?php else : ?>
+							<div class="card">
+							    <div class="card-header custom_card" id="heading<?php echo $i; ?>">
+							      <h5 class="mb-0 collapsed custom_card"  data-target="#collapse<?php echo $i; ?>" aria-expanded="false" aria-controls="collapse<?php echo $i; ?>">
+							          <?php echo $faq->getData('faq_question'); ?>
+							      </h5>
+							    </div>
+							    <div id="collapse<?php echo $i; ?>" class="collapse " aria-labelledby="heading<?php echo $i; ?>" data-parent="#accordionExample">
+							      <div class="card-body">
+							        <?php echo $faq->getData('faq_answer'); ?>
+							      </div>
+							    </div>
+							</div>
+						<?php endif; ?>
+						<?php if($i==3){ ?> 
+						</div>
+						<div class="col-lg-6">
+						<?php } ?>
+				<?php $i++; } ?>
+				</div>
+			</div>						
+		</div>    				
+	</div>
+</div>

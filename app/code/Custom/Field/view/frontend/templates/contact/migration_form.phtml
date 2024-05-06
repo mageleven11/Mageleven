@@ -1,0 +1,115 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
+<section class="contact-form-sec">
+  <div class="container">
+    <div class="contact-form-title">Want to build a Magento website that</div>
+    <p class="intro">Has the right features. Hits the right goal. At a remarkably affordable price. Contact us!</p>
+
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-10">
+       <form id="contactForm" action="<?php echo $block->getUrl('customfield/index/migrationservice') ?>" method="post">
+    <div class="row">
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="control-label" for="yourname-field">Your name*</label>
+            <input type="text" name="development_name" class="form-control fc-name-icon" id="yourname-field" placeholder="matt henry" data-validate="{required:true}">
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="control-label" for="email-field">Email address*</label>
+            <input type="email" name="email" class="form-control fc-email-icon" id="email-field" placeholder="*********@gmail.com" data-validate="{required:true}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="control-label" for="companyname-field">Company name</label>
+            <input type="text" name="company_name" class="form-control fc-company-icon" id="companyname-field" placeholder="matt henry" data-validate="{required:true}">
+        </div>
+        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <label class="control-label" for="number-field">Your phone number*</label>
+            <input type="number" name="phone_number" class="form-control" id="number-field" placeholder="*******768" data-validate="{required:true}">
+        </div>
+         <input type="hidden" id="hidden-dial-code" name="hiddenDialCode">
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="message-field">Let us about you*</label>
+        <textarea name="message" class="form-control" id="message-field" rows="6" placeholder="hii, there i would like...." data-validate="{required:true}"></textarea>
+    </div>
+
+    <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+        <p class="small-text">We'll get back to you in 1-2 business days.</p>
+    </div>
+</form>
+
+
+      </div>
+    </div>
+ </div>
+</section>
+
+<script>
+   require(['jquery'],function(){
+   document.getElementById("contactForm").addEventListener("submit", function(event) {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var form = document.getElementById("contactForm");
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    form.classList.add("was-validated");
+  }, false);
+})
+</script>
+<script>
+  require([
+    'jquery',
+    'mage/validation'
+], function ($)
+ {
+    $.validator.addMethod(
+        'validate-custom-phone', 
+        function (value, element) {
+            // Check if the value matches the allowed format and has a maximum length of 10 digits
+            return this.optional(element) || /^[0-9 ()+-]{10}$/.test(value);
+        }, 
+        $.mage.__('Please enter a valid 10-digit phone number.')
+    );
+
+    $('#contactForm').mage('validation', {});
+
+});
+</script>
+<script>
+  // Initialize the international telephone input
+  document.addEventListener('DOMContentLoaded', function () {
+    var input = document.querySelector("#number-field");
+    var iti = window.intlTelInput(input, {
+      separateDialCode: true,
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/utils.js"
+    });
+
+    // Set the default country
+    iti.setCountry("US"); // Set your desired default country code
+  });
+</script>
+<script>
+  require(['jquery'],function($){
+    $(document).ready(function () {
+       // Function to update hidden input value
+        function updateHiddenInput() {
+            // Get the selected dial code
+            var selectedFlag = $(".iti__selected-flag");
+            var dialCode = selectedFlag.find(".iti__selected-dial-code").text().trim();
+
+            // Set the dial code to the hidden input value
+            $("#hidden-dial-code").val(dialCode);
+        }
+
+        // Handle keypress event on the number field and click event on flag container
+        $('#number-field, .iti__flag-container').on('input click', function () {
+            updateHiddenInput();
+        });
+      });
+    });
+</script>

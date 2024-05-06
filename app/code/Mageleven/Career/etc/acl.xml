@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Mageleven_Career::mageleven" title="Mageleven" sortOrder="51">
+                    <resource id="Mageleven_Career::career_allcareer" title="All Career" sortOrder="10">
+						<resource id="Mageleven_Career::save" title="Save Career" translate="title" sortOrder="10" />
+						<resource id="Mageleven_Career::career_delete" title="Delete Career" translate="title" sortOrder="20" />
+					</resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Mageleven_Career::career_config" title="Mageleven Career" translate="title"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

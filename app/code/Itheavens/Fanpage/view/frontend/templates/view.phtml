@@ -1,0 +1,18 @@
+<?php
+
+$products = $block->getProducts();
+$helper = $this->helper('Itheavens\Fanpage\Helper\Data');
+foreach ($products as $product) {
+  $imageUrl = $helper->getImageUrl($product);
+ ?>
+  <li>
+    <a href="javascript:;">
+      <img src="<?php echo $imageUrl; ?>" alt="">
+      <p><?php echo $product->getName(); ?></p>
+      <div class="price discount_product" data-id="<?php echo $product->getId(); ?>"><?php echo $helper->getFormattedPrice($product->getFinalPrice()); ?></div>
+    </a>
+  </li>
+  
+<?php  
+}
+?>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Sales\Block\Adminhtml\Order\View">
+        <plugin name="delete_order_add_button_delete" type="Mageleven\DeleteOrders\Plugin\Order\AddDeleteButton"/>
+    </type>
+    <type name="Magento\Ui\Component\MassAction">
+        <plugin name="delete_order_add_massaction_delete" type="Mageleven\DeleteOrders\Plugin\Order\AddDeleteAction"/>
+    </type>
+</config>

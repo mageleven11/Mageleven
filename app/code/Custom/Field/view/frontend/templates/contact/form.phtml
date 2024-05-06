@@ -1,0 +1,155 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+// phpcs:disable Generic.Files.LineLength.TooLong
+
+/** @var \Magento\Contact\Block\ContactForm $block */
+/** @var \Magento\Contact\ViewModel\UserDataProvider $viewModel */
+
+$viewModel = $block->getViewModel();
+?>
+
+<form class="form contact"
+      action="<?php echo $block->getUrl('customfield/index/post') ?>"
+      id="contact-form"
+      method="post"
+      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Hire Us')) ?></span></legend><br />
+        <div class="field note no-label">
+            <?= $block->escapeHtml(__('Thank you for reaching out to Magelevan for premium Magento 2 extensions and services.')) ?>
+        </div>
+        <div class="field name required">
+            <label class="label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
+            <div class="control">
+                <input name="name"
+                       id="name"
+                       title="<?= $block->escapeHtmlAttr(__('Name')) ?>"
+                       value="<?= $block->escapeHtmlAttr($viewModel->getUserName()) ?>"
+                       class="input-text"
+                       type="text"
+                       data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field email required">
+            <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+            <div class="control">
+                <input name="email"
+                       id="email"
+                       title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                       value="<?= $block->escapeHtmlAttr($viewModel->getUserEmail()) ?>"
+                       class="input-text"
+                       type="email"
+                       data-validate="{required:true, 'validate-email':true}"
+                       data-mage-init='{"mage/trim-input":{}}'
+                />
+            </div>
+        </div>
+        <div class="field telephone">
+            <label class="label" for="telephone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
+            <div class="control">
+                <input name="telephone"
+                       id="telephone"
+                       title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
+                       value="<?= $block->escapeHtmlAttr($viewModel->getUserTelephone()) ?>"
+                       class="input-text"
+                       type="tel" 
+                       data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field comment required">
+            <label class="label" for="comment">
+                <span><?= $block->escapeHtml(__('What’s on your mind?')) ?></span>
+            </label>
+            <div class="control">
+                <textarea name="comment"
+                          id="comment"
+                          title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>"
+                          class="input-text"
+                          cols="5"
+                          rows="3"
+                          data-validate="{required:true}"
+                ><?= $block->escapeHtml($viewModel->getUserComment()) ?></textarea>
+            </div>
+        </div>
+        <?= $block->getChildHtml('form.additional.info') ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
+                <span><?= $block->escapeHtml(__('Submit')) ?></span>
+            </button>
+        </div>
+    </div>
+    <input type="hidden" id="hidden-dial-code" name="hiddenDialCode">
+
+</form>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Customer/js/block-submit-on-send": {
+                "formId": "contact-form"
+            }
+        }
+    }
+</script>
+<script>
+  require([
+    'jquery',
+    'mage/validation'
+], function ($)
+ {
+    $.validator.addMethod(
+        'validate-custom-phone', 
+        function (value, element) {
+            // Check if the value matches the allowed format and has a maximum length of 10 digits
+            return this.optional(element) || /^[0-9 ()+-]{10}$/.test(value);
+        }, 
+        $.mage.__('Please enter a valid 10-digit phone number.')
+    );
+
+    $('#contact-form').mage('validation', {});
+
+});
+</script>
+ <script>
+  // Initialize the international telephone input
+  document.addEventListener('DOMContentLoaded', function () {
+    var input = document.querySelector("#telephone");
+    var iti = window.intlTelInput(input, {
+      separateDialCode: true,
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/utils.js"
+    });
+
+    // Set the default country
+    iti.setCountry("US"); // Set your desired default country code
+  });
+</script>
+<script>
+  require(['jquery'],function($){
+    $(document).ready(function () {
+       // Function to update hidden input value
+        function updateHiddenInput() {
+            // Get the selected dial code
+            var selectedFlag = $(".iti__selected-flag");
+            var dialCode = selectedFlag.find(".iti__selected-dial-code").text().trim();
+
+            // Set the dial code to the hidden input value
+            $("#hidden-dial-code").val(dialCode);
+        }
+
+        // Handle keypress event on the number field and click event on flag container
+        $('#telephone, .iti__flag-container').on('input click', function () {
+            updateHiddenInput();
+        });
+      });
+    });
+</script>

@@ -1,0 +1,39 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+<body>
+	<referenceBlock name="breadcrumbs" remove="true" />
+
+
+<referenceBlock name="logo">
+<arguments>
+<argument name="logo_file" xsi:type="string">images/logo.png</argument>
+<argument name="logo_img_width" xsi:type="number">277</argument>
+<argument name="logo_img_height" xsi:type="number">46</argument>
+</arguments>
+</referenceBlock>
+<referenceContainer name="head.additional">
+    <block class="Magento\Framework\View\Element\Template" name="custom.head" template="Magento_Theme::html/canonicaltags.phtml"/>
+    <block class="Magento\Framework\View\Element\Template" name="preloader" template="Magento_Theme::html/loader.phtml" after="custom.head"/>
+</referenceContainer>
+<referenceContainer name="header.container">
+<block class="Magento\Framework\View\Element\Template" name="custom_header" as="custom_header" template="Magento_Theme::html/customheader.phtml" before="-"/>
+</referenceContainer>
+<move element="logo" as="logo" destination="custom_header"/>
+<move element="top.search" as="topsearch" destination="custom_header"/>
+<move element="minicart" as="minicart" destination="custom_header"/>
+<move element="store_language" as="store_language" destination="custom_header" />
+<move element="header.panel" as="header.panel" destination="custom_header"/>
+
+
+<move element="navigation.sections" destination="custom_header" /> 
+<move element="catalog.compare.link" destination="custom_header" />
+<referenceBlock name="footer_links" remove="true"/>
+<referenceBlock name="form.subscribe" remove="true"/>
+<referenceBlock name="copyright" remove="true"/>
+
+<referenceContainer name="footer" htmlClass="footer wow fadeInDown" >
+	<block class="Magento\Framework\View\Element\Template" name="custom-footer" template="Magento_Theme::html/custom-footer.phtml" />
+</referenceContainer>
+ <referenceBlock name="store.settings" remove="true"/>
+</body>
+</page>

@@ -1,0 +1,28 @@
+{
+  "name": "mageleven/infinitescroll",
+  "description": "Infinite scroll for magento 2 automatically loads product catalog without reloading the page.",
+    "require": {
+    "mageleven/core": "^1.0.0"
+  },
+  "type": "magento2-module",
+  "license": [
+      "OSL-3.0",
+      "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Mageleven",
+      "email": "support@mageleven.com",
+      "homepage": "https://mageleven.com",
+      "role": "Technical Support"
+    }
+  ],
+  "autoload": {
+      "files": [
+          "registration.php"
+      ],
+      "psr-4": {
+          "Mageleven\\InfiniteScroll\\": ""
+      }
+  }
+}

@@ -1,0 +1,397 @@
+
+<!-- banner -->
+<section class="homeslider">
+   <div class="container">
+         <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('home-hero-banner')->toHtml(); ?>
+   </div>
+</section>
+<!-- Why Mageleven -->
+<section class="whymage wow fadeInUp">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-12 wow fadeInDown">
+            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('home-why-mageleven')->toHtml(); ?>
+         </div>
+         <div class="col-lg-3 col-md-6">
+            <div class="whybox ext">
+               <div class="bigtext"><img src="<?= $block->getViewFileUrl('img/extensions.png'); ?>" alt="<?= __('Extensions'); ?>"> 25+</div>
+               <p><?= __('Extensions'); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6">
+            <div class="whybox dow">
+               <div class="bigtext"><img src="<?= $block->getViewFileUrl('img/downloads.png'); ?>" alt="<?= __('Downloads'); ?>"> 3.2k+</div>
+               <p><?= __('Downloads'); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6">
+            <div class="whybox glo">
+               <div class="bigtext"><img src="<?= $block->getViewFileUrl('img/customer.png'); ?>" alt="<?= __('Global Customers'); ?>"> 6k+</div>
+               <p><?= __('Global Customers'); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6">
+            <div class="whybox cou">
+               <div class="bigtext"><img src="<?= $block->getViewFileUrl('img/country.png'); ?>" alt="<?= __('Countries'); ?>"> 80+</div>
+               <p><?= __('Countries'); ?></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- Customers Benefits -->
+<section class="benifits">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-12 wow fadeInDown">
+            <h2><?= __('User’s Benefits'); ?></h2>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="benifitbox">
+               <img class="img-fluid" src="<?= $block->getViewFileUrl('img/moneyback.png'); ?>" alt="<?= __('60-day Money Back'); ?>">
+               <p><?= __('60-Day Money-Back Guarantee'); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="benifitbox">
+               <img class="img-fluid" src="<?= $block->getViewFileUrl('img/lifetimeupdate.png'); ?>" alt="<?= __('Life-time Update'); ?>">
+               <p><?= __('Life-time Update'); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="benifitbox">
+               <img class="img-fluid" src="<?= $block->getViewFileUrl('img/support.png'); ?>" alt="<?= __('365-day Free Support'); ?>">
+               <p><?= __('Complimentary 1-Year Support'); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="benifitbox">
+               <img class="img-fluid" src="<?= $block->getViewFileUrl('img/composer.png'); ?>" alt="<?= __('Composer Installation'); ?>">
+               <p><?= __('Effortless Composer Installation'); ?></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+
+<!-- Featured Magento 2 Extensions -->
+<section class="extension">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-12 wow fadeInDown">
+            <h2><?= __('Featured Magento 2 Extensions'); ?></h2>
+         </div>
+         <?php foreach ($block->getFeaturedProductsHome() as $featuredProduct) : ?>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="solbox">
+               <?php if(!empty($featuredProduct->getImage()) || $featuredProduct->getImage() != 'no_selection') : ?>
+               <div class="imgbox"><a href="<?= $featuredProduct->getProductUrl(); ?>"><img class="img-fluid" src="<?= $block->getMediaPathUrlHome('catalog/product'.$featuredProduct->getImage()); ?>" alt="<?= $featuredProduct->getName(); ?>"></a></div>
+               <?php endif; ?>
+               <h3><a href="<?= $featuredProduct->getProductUrl(); ?>"><?= $featuredProduct->getName(); ?></a></h3>
+               <div class="price">
+
+                  <?= ($featuredProduct->getPrice() == 0) ? "Free" : $block->getFormattedPriceHome($featuredProduct->getPrice()); ?>
+               </div>
+               <?php //if($block->getTotalReviewHome($featuredProduct->getId()) > 0) : ?>
+                  <div class="review custom">
+                  <?= ($block->getTotalReviewHome($featuredProduct->getId()) == 0 ? "0" : $block->getTotalReviewHome($featuredProduct->getId())); ?> 
+                     <?= __('reviews'); ?></div>
+               <?php // endif; ?>
+               <div class="clearfix">&nbsp;</div>
+            </div>
+         </div>
+         <?php endforeach; ?>
+         <div class="col-lg-12 text-right wow fadeInUp"><a class="btn btn-primary" href="<?= $block->getUrl('featured-deals.html');?>"><?= __('All Extensions'); ?> <img src="<?= $block->getViewFileUrl('img/btn-wh-arrow.png'); ?>" alt="<?= __('All Extensions'); ?>"></a></div>
+      </div>
+   </div>
+</section>
+<!-- New Magento 2 Extensions -->
+<section class="newextension extension">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-12 wow fadeInDown">
+            <h2><?= __('New Magento 2 Extensions'); ?></h2>
+         </div>
+         <?php foreach ($block->getNewProductHome() as $newProduct) : ?>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="solbox">
+               <?php if(!empty($newProduct->getImage()) || $newProduct->getImage() != 'no_selection') : ?>
+               <div class="imgbox"><a href="<?= $newProduct->getProductUrl(); ?>"><img class="img-fluid" src="<?= $block->getMediaPathUrlHome('catalog/product'.$newProduct->getImage()); ?>" alt="<?= $newProduct->getName(); ?>"></a></div>
+               <?php endif; ?>
+               <h3><a href="<?= $newProduct->getProductUrl(); ?>"><?= $newProduct->getName(); ?></a></h3>
+               <div class="price">
+                  <?= ($newProduct->getPrice() == 0) ? "Free" : $block->getFormattedPriceHome($featuredProduct->getPrice()); ?>
+               </div>
+                 <div class="review custom">
+                  <?= ($block->getTotalReviewHome($newProduct->getId()) == 0 ? "0" : $block->getTotalReviewHome($newProduct->getId())); ?> 
+                     <?= __('reviews'); ?></div>
+               <div class="clearfix">&nbsp;</div>
+            </div>
+         </div>
+         <?php endforeach; ?>
+      <div class="col-lg-12 text-right wow fadeInUp"><a class="btn btn-primary" href="<?= $block->getUrl('extension-deals.html');?>"><?= __('All New Extensions'); ?> <img src="<?= $block->getViewFileUrl('img/btn-wh-arrow.png'); ?>" alt="<?= __('All New Extensions'); ?>"></a></div>
+      </div>
+   </div>
+</section>
+<!-- Our Magento Services -->
+<section class="ourservice">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-12 wow fadeInDown">
+            <h2><?= __('Our Magento Services'); ?></h2>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="srbox">
+               <a href="<?= $block->getUrl('custom-development-services'); ?>"> <img class="img-fluid" src="<?= $block->getViewFileUrl('img/service1.png'); ?>" alt="<?= __('Custom Development'); ?>"></a>
+               <h3><?= __('Custom Development'); ?></h3>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="srbox">
+               <a href="<?= $block->getUrl('magento-maintenance-services'); ?>"> <img class="img-fluid" src="<?= $block->getViewFileUrl('img/service2.png'); ?>" alt="<?= __('Magento Maintenance Services'); ?>"></a>
+               <h3><?= __('Magento'); ?><br><?= __('Maintenance Services'); ?></h3>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="srbox">
+               <a href="<?= $block->getUrl('upgrade-to-magento-2'); ?>"> <img class="img-fluid" src="<?= $block->getViewFileUrl('img/service3.png'); ?>" alt="<?= __('Upgrade to Magento 2'); ?>"></a>
+               <h3><?= __('Upgrade to Magento 2'); ?></h3>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="srbox">
+               <a href="<?= $block->getUrl('b2b-implementation-services'); ?>"> <img class="img-fluid" src="<?= $block->getViewFileUrl('img/service4.png'); ?>" alt="<?= __('B2B Implementation'); ?>"></a>
+               <h3><?= __('B2B Implementation'); ?></h3>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="srbox">
+               <a href="<?= $block->getUrl('magento-migration-services'); ?>"> <img class="img-fluid" src="<?= $block->getViewFileUrl('img/service5.png'); ?>" alt="<?= __('Magento Migration'); ?>"></a>
+               <h3><?= __('Magento Migration'); ?></h3>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="srbox">
+               <a href="#"> <img class="img-fluid" src="<?= $block->getViewFileUrl('img/service6.png'); ?>" alt="<?= __('Magento SEO'); ?>"></a>
+               <h3><?= __('Magento SEO'); ?></h3>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="srbox">
+               <a href="#"> <img class="img-fluid" src="<?= $block->getViewFileUrl('img/service7.png'); ?>" alt="<?= __('Performance Optimization Service'); ?>"></a>
+               <h3><?= __('Performance'); ?><br><?= __('Optimization Service'); ?></h3>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="srbox">
+               <a href="#"> <img class="img-fluid" src="<?= $block->getViewFileUrl('img/service8.png'); ?>" alt="<?= __('Support'); ?>"></a>
+               <h3><?= __('Support'); ?></h3>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- Our Team -->
+<section class="container">
+   <div class="ourteam">
+      <div class="row">
+         <div class="col-lg-6 wow fadeInLeft">
+            <div class="teambox"><img src="<?= $block->getViewFileUrl('img/team.jpg'); ?>" class="img-fluid" alt="<?= __('Our Team'); ?>"></div>
+         </div>
+         <div class="col-lg-6 wow fadeInRight">
+            <div class="teamcontent expert">
+               <h2><?= __('Our Expertise'); ?></h2>
+               <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('home-out-team-short-content')->toHtml(); ?>
+               <a href="<?= $block->getUrl('about-us'); ?>" class="btn btn-primary"><?= __('Know More'); ?></a>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+
+<!-- Mageleven? Solutions -->
+<section class="magsolution" style="text-align: left">
+   <div class="container">
+            <h2 class="mage" style="text-align: center"><?= __('Mageleven Solutions'); ?></h2>
+         </div>
+  <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('mageleven-solutions')->toHtml(); ?> 
+</div>
+</div>
+</section>
+ <script>
+    require(['jquery'], function($) {
+       $(document).ready(function(){
+          setTimeout(function(){
+      console.log("hello");
+      $('#solutions').owlCarousel({
+         items:4,
+          loop:true,
+          margin:10,
+          nav:true,
+          responsive:{
+              0:{
+            items:1
+          },630:{
+            items:2
+          },991:{
+            items:2
+          },1200:{
+            items:3
+          }
+          }
+      });
+      
+       },3000);
+   });
+});
+</script>
+
+
+<!-- blog -->
+<section class="blog blogmid blog-slider-sec">
+   <div class="container">
+     
+         <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('home_blog_slider')->toHtml(); ?>
+         <!-- <div class="col-lg-4">
+            <div class="whbox">
+               <?php //$imageUrl =  $this->getUrl() . 'media/cms/new/blog1.png';?>
+               <h4>How-tos</h4>
+               <p>How-tos provide basic knowledge of Magento, especially Magento 2 platform. A series of instructions to configure or customize a feature is from elementary to advance. Feel free to contribute your articles here.</p>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <div class="whbox">
+             <?php // $imageUrl =  $this->getUrl() . 'media/cms/new/blog2.png';?>
+               <h4>Dev docs</h4>
+               <p>Dev docs are for Magento 2 developers who want to customize an advanced feature which is not available in the default platform. The targeted audience should have certain related knowledge and skills for coding.</p>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <div class="whbox">
+               <?php // $imageUrl =  $this->getUrl() . 'media/cms/new/blog3.png';?>
+               <h4>Blogs</h4>
+               <p>We typically write about everything in our blogs as long as the content can help our readers. As already mentioned, this category is the most potential section for you to contribute as we are open with a wide range of topics.</p>
+            </div>
+         </div> -->
+     
+   </div>
+</section>
+
+
+<!-- Why Choose Mageleven Extensions and Services -->
+<section class="wychoose">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="col-lg-12 wow fadeInDown">
+            <h2><?= $block->escapeHtml(__('Why Choose Mageleven Extensions and Services?')); ?></h2>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="choosbox">
+               <img src="<?= $block->getViewFileUrl('img/ext1.png'); ?>" alt="<?= $block->escapeHtml(__('30-Day Money Back')); ?>">
+               <h3><?= $block->escapeHtml(__('Seamless Integration Assurance')); ?></h3>
+               <p><?= $block->escapeHtml(__("Ensure a smooth start with our extensions through our commitment to free installation support.")); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="choosbox">
+               <img src="<?= $block->getViewFileUrl('img/ext2.png'); ?>" alt="<?= $block->escapeHtml(__('Lifetime free updates')); ?>">
+               <h3><?= $block->escapeHtml(__('Continuous Enhancement with Latest Updates')); ?></h3>
+               <p><?= $block->escapeHtml(__('Stay ahead in the dynamic ecommerce landscape with our promise of lifetime free updates.')); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="choosbox">
+               <img src="<?= $block->getViewFileUrl('img/ext3.png'); ?>" alt="<?= $block->escapeHtml(__('90-day Free Support')); ?>">
+               <h3><?= $block->escapeHtml(__('Responsive 90 days Troubleshooting Support')); ?></h3>
+               <p><?= $block->escapeHtml(__('Experience a dedicated support journey with Mageleven. Enjoy 90 days of complimentary troubleshooting support and bug fixes.')); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="choosbox">
+               <img src="<?= $block->getViewFileUrl('img/ext4.png'); ?>" alt="<?= $block->escapeHtml(__('Free installation support')); ?>">
+               <h3><?= $block->escapeHtml(__('30-Day Refund Policy')); ?></h3>
+               <p><?= $block->escapeHtml(__('Shop with confidence knowing you have 30 days to explore our extensions risk-free.')); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="choosbox">
+               <img src="<?= $block->getViewFileUrl('img/ext5.png'); ?>" alt="<?= $block->escapeHtml(__('High-Quality code')); ?>">
+               <h3><?= $block->escapeHtml(__('Excellent High-Quality Code')); ?></h3>
+               <p><?= $block->escapeHtml(__('Trust in the excellence of Mageleven extensions. Our code is not just functional but of the highest quality.')); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="choosbox">
+               <img src="<?= $block->getViewFileUrl('img/ext6.png'); ?>" alt="<?= $block->escapeHtml(__('Extensive Documentation')); ?>">
+               <h3><?= $block->escapeHtml(__('Comprehensive Documentation')); ?></h3>
+               <p><?= $block->escapeHtml(__('Access in-depth knowledge through detailed PDFs and online user manuals.')); ?></p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="choosbox">
+               <img src="<?= $block->getViewFileUrl('img/ext7.png'); ?>" alt="<?= $block->escapeHtml(__('100% Bug free code')); ?>">
+               <h3><?= $block->escapeHtml(__('Bug-Free Assurance')); ?></h3>
+               <p><?= $block->escapeHtml(__("Our commitment to bug-free code reflects our dedication to providing a flawless user experience.")); ?></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- Are you Agency -->
+<section class="agency">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-12 wow fadeInDown">
+          
+            <h2><div class="partner" style="font-size: 21px"><?= $block->escapeHtml(__('Empower your business by becoming a Valued Partner with Mageleven')); ?></div></h2>
+         
+            <p>
+               (<?= $block->escapeHtml(__('Become a')); ?>
+               <u><a href="partner-program"><?= $block->escapeHtml(__('Partner')); ?></a></u>
+               /
+               <?= $block->escapeHtml(__('Become a')); ?>
+               <u><a href="discount-program"><?= $block->escapeHtml(__('Magician')); ?></a></u>)
+            </p>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial wow fadeInUp">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="col-lg-9">
+            <?php echo $this->getLayout()->createBlock("Magiccart\Testimonial\Block\Post\TestimonialList")->setTemplate("post/listHome.phtml")->toHtml(); ?>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- clients -->
+<section class="client wow fadeInUp">
+   <div class="container">
+      <ul>
+         <?php foreach ($block->getImageListHome() as $imagelist) : ?>
+         <li><img src="<?= $block->getMediaPathUrlHome($imagelist->getPath()); ?>" alt="<?= $imagelist->getImageTitle(); ?>"></li>
+         <?php endforeach; ?>
+      </ul>
+   </div>
+</section>
+
+<!-- Subscribe  -->
+<section class="subscribe">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-5 wow fadeInLeft">
+            <h2><small><?= $block->escapeHtml(__('Subscribe to Us and Unlock Opportunities')) ?></small> <br><div class="sub" style="font-size:20px;font-weight: 300;line-height: 2;"><?= $block->escapeHtml(__('To receive exclusive updates and offers')) ?></div></h2>
+         </div>
+         <div class="col-lg-6 wow fadeInRight">
+            <div class="inbox">
+               <?php echo $this->getLayout()->createBlock("Magento\Newsletter\Block\Subscribe")->setTemplate("Magento_Newsletter::subscribe.phtml")->toHtml(); ?>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>

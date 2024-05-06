@@ -1,0 +1,115 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Blog
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+use Mageplaza\Blog\Block\Widget\Posts;
+
+/** @var Posts $block */
+$posts = $block->getCollection();
+?>
+<div class="blog-widget-title"><a></a></div>
+<div class="post-list-container mpcss" id="mpblog-list-container">
+   
+        <div class="d-flex">
+      <h2>Our Blogs</h2>
+      <a href="/blog" class="btn btn-primary">View All Blogs</a>
+    </div>
+        <div class="blog-carousel owl-carousel owl-theme">
+        <?php foreach ($posts as $post) : 
+            ?>
+            <div class="blog-list">
+                    <?php if ($post->getImage()) : ?>
+                        
+                            <a class="blog-list-img" href="<?= $block->escapeUrl($post->getUrl()) ?>">
+                                <img src="<?= $block->escapeUrl($block->resizeImage($post->getImage(), '400x')) ?>"
+                                     alt="<?= $block->escapeHtml($post->getName()); ?>"/>
+                            </a>
+                        
+                    <?php endif; ?>
+                    <div class="blog-list-inner">
+                        <div class="blog-list-date">
+                            <?php echo $post['publish_date']; ?>
+                        </div>
+
+                        <div class="blog-list-title">
+                            <a  title="<?= $block->escapeHtmlAttr($post->getName()) ?>"
+                               href="<?= $block->escapeUrl($post->getUrl()) ?>">
+                                <?= $block->escapeHtml($post->getName()) ?>
+                            </a>
+                        </div>
+                        
+                        <!-- <div class="post-short-description">
+                            <p><?php // $post->getShortDescription() ?></p>
+                        </div> -->
+                        <div class="mp-clearfix"></div>
+                        <div class="mp-post-meta-info mp-alignright">
+                            <div class="actions">
+<button class="read-more-btn" data-url="<?= $block->escapeUrl($post->getUrl()) ?>">
+                        <span><?= $block->escapeHtml(__('Read More ' . $post->getTitle())) ?></span>
+                    </button>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        <?php endforeach; ?>
+       </div>
+    
+</div>
+ <script>
+    require(['jquery'], function($) {
+        setTimeout(function(){
+    $('.blog-carousel').owlCarousel({
+        items: 3,
+        margin:15,
+        autoplay: true,
+        nav: true,
+        dots: false,
+        loop: false,
+        smartSpeed: 450,
+        navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+        responsiveClass:true,
+        responsive:{
+          0:{
+            items:1
+          },630:{
+            items:2
+          },991:{
+            items:2
+          },1200:{
+            items:3
+          }
+        }
+      });
+   },3000);
+});
+
+
+
+</script>
+
+<script>
+     require(['jquery'], function($) {
+           $(".read-more-btn").click(function() {
+            var url = $(this).data("url");
+            window.location.href = url;
+        });
+    });
+</script>

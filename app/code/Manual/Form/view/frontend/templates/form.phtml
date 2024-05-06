@@ -1,0 +1,46 @@
+<section class="contact-form-sec">
+    <div class="container">
+        <div class="contact-form-title">Want to build a Magento website that</div>
+        <p class="intro">Has the right features. Hits the right goal. At a remarkably affordable price. Contact us!</p>
+
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-10">
+                <!-- Your dynamic form HTML here -->
+                <form id="contactForm">
+                    <div class="row">
+                        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <label class="control-label" for="yourname-field">Your name*</label>
+                            <input type="text" class="form-control fc-name-icon" id="yourname-field" placeholder="<?= $block->escapeHtml($block->getFormData()['name']) ?>">
+                        </div>
+                        <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <label class="control-label" for="email-field">Email address*</label>
+                            <input type="email" class="form-control fc-email-icon" id="email-field" placeholder="<?= $block->escapeHtml($block->getFormData()['email']) ?>">
+                        </div>
+                    </div>
+
+                    <!-- Add similar dynamic data handling for other form fields -->
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <p class="small-text">We'll get back to you in 1-2 business days.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    require(['jquery'], function($) {
+        function submitForm() {
+            // Your AJAX submission logic here
+        }
+
+        $(document).ready(function () {
+            $('#contactForm button').on('click', function (e) {
+                e.preventDefault();
+                submitForm();
+            });
+        });
+    });
+</script>

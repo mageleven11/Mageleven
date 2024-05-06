@@ -1,0 +1,124 @@
+<!-- Add these lines to the head section of your HTML document -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
+<div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10">
+          <form action="<?php echo $block->getUrl('customfield/index/career') ?>" method="post" id="career_form" enctype="multipart/form-data">
+            <div class="row">
+              <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <label class="control-label" for="yourname-field">Your name*</label>
+                <input type="text" class="form-control fc-name-icon" data-validate="{required:true}" name="development_name" id="yourname-field" placeholder="matt henry">
+              </div>
+              <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <label class="control-label" for="email-field">Email address*</label>
+                <input type="email" class="form-control fc-email-icon" data-validate="{required:true}" name="email" id="email-field" placeholder="*********@gmail.com">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <label class="control-label" for="number-field">Your phone number*</label>
+                <div class="row gx-0">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <input type="tel" class="form-control" data-validate="{required:true}" id="number-field" name="telephone" placeholder="Enter your phone number">
+                  </div>
+                  
+                </div>
+              </div>
+
+              <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <label class="control-label" for="companyname-field">How Much you have exp?</label>
+                <input type="number" class="form-control fc-company-icon" data-validate="{required:true}" id="companyname-field" name="exp" placeholder="2">
+              </div>
+            </div>
+            <div class="form-group">
+    <label class="control-label" for="career-field">Career*</label>
+    <select class="form-control" required name="career" id="career-field" data-validate="{required:true}">
+        <option value="">Select Career</option>
+        <option value="human_resource">Magento Extension Developer</option>
+        <option value="science">Magento Store Customization Expert</option>
+        <option value="science">Content Marketing Strategist</option>
+        <option value="science">SEO Specialist</option>
+        <option value="science">Project Manager</option>
+        <option value="science">Human Resources Associate</option>
+    </select>
+</div>
+
+
+            <div class="form-group">
+              <label class="control-label" for="message-field">Let us about you*</label>
+              <textarea class="form-control" id="message-field" data-validate="{required:true}" rows="6" name="message" placeholder="hii, there i would like...."></textarea>
+            </div>
+
+   <div class="form-group">
+  <div class="field">
+          <label for="myfile"> <?= __('Attach Your CV (.doc,docx,.pdf,.odt)') ?></label>
+          <div class="control">
+            <input type="file" id="myfile" name="myfile" data-validate="{required:true}">
+          </div>
+        </div>
+</div>
+    <input type="hidden" id="hidden-dial-code" name="hiddenDialCode">
+
+
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-primary" id="apply_now">APPLY NOW</button>
+            </div>
+
+
+          </form>
+
+        </div>
+      </div>
+      <script>
+  // Initialize the international telephone input
+  document.addEventListener('DOMContentLoaded', function () {
+    var input = document.querySelector("#number-field");
+    var iti = window.intlTelInput(input, {
+      separateDialCode: true,
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/utils.js"
+    });
+
+    // Set the default country
+    iti.setCountry("US"); // Set your desired default country code
+  });
+</script>
+<script>
+  require(['jquery'],function($){
+    $(document).ready(function () {
+       // Function to update hidden input value
+        function updateHiddenInput() {
+            // Get the selected dial code
+            var selectedFlag = $(".iti__selected-flag");
+            var dialCode = selectedFlag.find(".iti__selected-dial-code").text().trim();
+
+            // Set the dial code to the hidden input value
+            $("#hidden-dial-code").val(dialCode);
+        }
+
+        // Handle keypress event on the number field and click event on flag container
+        $('#number-field, .iti__flag-container').on('input click', function () {
+            updateHiddenInput();
+        });
+      });
+    });
+</script>
+<script>
+  require([
+    'jquery',
+    'mage/validation'
+], function ($)
+ {
+    $.validator.addMethod(
+        'validate-custom-phone', 
+        function (value, element) {
+            // Check if the value matches the allowed format and has a maximum length of 10 digits
+            return this.optional(element) || /^[0-9 ()+-]{10}$/.test(value);
+        }, 
+        $.mage.__('Please enter a valid 10-digit phone number.')
+    );
+
+    $('#career_form').mage('validation', {});
+
+});
+</script>

@@ -1,0 +1,140 @@
+<?php
+/** @var \Magento\Catalog\Model\Product $currentProduct */
+$currentProduct = $block->getCurrentProduct();
+?>
+
+
+
+    <?php
+    // Fetch the value of the custom attribute
+    $backendDemoValue = $currentProduct->getData('backend_demo');
+    $frontendDemoValue = $currentProduct->getData('frontend_demo');
+    ?>
+
+    <input style="display: none;" class="admin__control-text" type="text" data-bind="
+        event: {change: userChanges},
+        value: value,
+        hasFocus: focused,
+        valueUpdate: valueUpdate,
+        attr: {
+            name: inputName,
+            placeholder: placeholder,
+            'aria-describedby': noticeId,
+            id: uid,
+            disabled: disabled,
+            maxlength: 255
+    }" name="product[backend_demo]" aria-describedby="notice-HQYWT2E" id="HQYWT2E" maxlength="255" value="<?php echo $backendDemoValue; ?>">
+
+    <input style="display: none;" class="admin__control-text" type="text" data-bind="
+        event: {change: userChanges},
+        value: value,
+        hasFocus: focused,
+        valueUpdate: valueUpdate,
+        attr: {
+            name: inputName,
+            placeholder: placeholder,
+            'aria-describedby': noticeId,
+            id: uid,
+            disabled: disabled,
+            maxlength: 255
+    }" name="product[frontend_demo]" aria-describedby="notice-T45G73N" id="T45G73N" maxlength="255" value="<?php echo $frontendDemoValue; ?>">
+
+    <a href="#" class="btn btn-info" id="backend-demo">
+        <i class="fas fa-desktop"></i> Backend Demo
+    </a>
+
+    <a href="#" class="btn btn-info" id="frontend-demo">
+        <i class="fas fa-desktop"></i> Frontend Demo
+    </a>
+
+    <div style="margin-bottom: 10px;">
+    <label for="SQDQOP8">Username:</label>
+    <div class="input-group">
+        <input class="admin__control-text" type="text" style="width: 150px;" data-bind="
+            event: {change: userChanges},
+            value: value,
+            hasFocus: focused,
+            valueUpdate: valueUpdate,
+            attr: {
+                name: inputName,
+                placeholder: placeholder,
+                'aria-describedby': noticeId,
+                id: uid,
+                disabled: disabled,
+                maxlength: 255
+        }" name="product[username]" aria-describedby="notice-SQDQOP8" id="SQDQOP8" maxlength="255" value="<?php echo $currentProduct->getData('username'); ?>">
+    </div>
+</div>
+
+<!-- Password Input -->
+<div style="margin-bottom: 10px;">
+    <label for="BTC1ESL">Password:</label>
+    <div class="input-group">
+        <input class="admin__control-text" type="password" style="width: 150px;" data-bind="
+            event: {change: userChanges},
+            value: value,
+            hasFocus: focused,
+            valueUpdate: valueUpdate,
+            attr: {
+                name: inputName,
+                placeholder: placeholder,
+                'aria-describedby': noticeId,
+                id: uid,
+                disabled: disabled,
+                maxlength: 255
+        }" name="product[password]" aria-describedby="notice-BTC1ESL" id="BTC1ESL" maxlength="255" value="<?php echo $currentProduct->getData('password'); ?>">
+        <div class="input-group-append">
+            <span class="input-group-text">
+                <i class="fas fa-eye" id="toggle-password"></i>
+            </span>
+        </div>
+    </div>
+</div>
+
+   <script>
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+            var passwordVisible = true;
+
+            // Toggle Password Visibility
+            $(document).on('click','#toggle-password', function () {
+                var passwordInput = $('#BTC1ESL');
+                var icon = $(this);
+
+                
+                console.log("djkhjh",passwordVisible)
+                if (passwordVisible) {
+                    passwordVisible = false;
+                    passwordInput.prop('type', 'text');
+                    icon.removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+                } else {
+                    passwordVisible = true;
+                    passwordInput.prop('type', 'password');
+                    icon.removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+                }
+            });
+
+            // Backend Demo
+            $('#backend-demo').on('click', function (event) {
+                event.preventDefault();
+                var backendDemoValue = $('#HQYWT2E').val();
+                if (backendDemoValue) {
+                    window.location.href = backendDemoValue;
+                }
+            });
+
+            // Frontend Demo
+            $('#frontend-demo').on('click', function (event) {
+                event.preventDefault();
+                var frontendDemoValue = $('#T45G73N').val();
+                if (frontendDemoValue) {
+                    window.location.href = frontendDemoValue;
+                }
+            });
+        });
+    });
+</script>
+
+
+
+

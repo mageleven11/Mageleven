@@ -1,0 +1,91 @@
+<section class="service-banner partnerbanner">
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('your-extension-idea-banner')->toHtml(); ?> 
+</section>
+<div class="idea-solution">
+      <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('your-extension-idea-solution')->toHtml(); ?>
+</div>
+<section class="idea-process wow fadeInUp">
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('your-extension-idea-execution-process')->toHtml(); ?> 
+</section>
+<div class="yourbenifits">
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('your-extension-idea-your-benifits')->toHtml(); ?> 
+</div>
+
+
+<!-- Let’s stay in touch! -->
+    <div class="ideaform">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <h2 class="text-center">So what are you waiting for, submit your unique ideas to get development from us!</h2>
+
+            <div class="formbox">
+              <form class="form contact" action="<?php echo $this->getUrl('extensionidea/index/save', ['_secure' => true]);?>" id="custom-form" method="post" data-hasrequired="<?php  echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}' style="width:100%; float: none;" enctype="multipart/form-data" >
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <input type="text" name="name" class="form-control" placeholder="Name *" required data-validate="{required:true}" />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control" placeholder="Email *" required data-validate="{required:true, 'validate-email':true}" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <input type="text" name="skype_mobile" class="form-control" placeholder="Skype/Mobile *" required data-validate="{required:true}" />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <select class="form-control" name="type" required data-validate="{required:true}">
+                        <option value="" selected>Select Type</option>
+                        <option value="Backend">Backend</option><?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('partner-program-partners-with-us')->toHtml(); ?>
+                        <option value="Frontend">Frontend</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <input type="text" name="refrence_link" class="form-control" placeholder="Idea Refrence Link"  />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <input type="file" name="attachment" class="form-control" >
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <textarea name="message" name="message" cols="10" rows="5" class="form-control" required data-validate="{required:true}" /></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <!-- <div class="col-lg-6">
+                    <img src="img/captcha.jpg" class="img-fluid" alt="">
+                  </div> -->
+                  <div class="col-lg-12 text-center">
+                    <button type="submit" title="<?php  echo __('Submit') ?>" class="btn btn-primary">
+                        <span><?php  echo __('Submit') ?></span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style type="text/css">
+        .form-control {
+          font-size: 14px;
+        }
+    </style>

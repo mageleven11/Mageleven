@@ -1,0 +1,47 @@
+<section class="service-banner partnerbanner">
+   
+         <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('partner-program-banner')->toHtml(); ?>
+</section>
+<section class="who-partner wow fadeInUp">
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('partner-program-partners-with-us')->toHtml(); ?> 
+  </section>
+<!-- What Our Partners Say About The Program -->
+<div class="ourpartner">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 text-center">
+        <h2>What Our Partners Say About The Program</h2>
+      </div>
+      <div class="col-lg-8">
+        <div class="partner-slide">
+          <?php echo $this->getLayout()->createBlock("Magiccart\Testimonial\Block\Post\TestimonialList")->setTemplate("post/listTestimonial.phtml")->toHtml(); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="likebg"></div>
+<!-- Let’s stay in touch! -->
+<div class="letstouch">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <img src="<?php echo $this->getUrl() ?>media/cms/stayintouch.jpg" class="img-fluid" alt="Lets stay in touch">
+      </div>
+      <div class="col-lg-6">
+        <h2>Let’s stay in touch!</h2>
+        <p><big>All our latest news, promotions and deals delivered to <br>your inbox a few times a month.</big></p>
+        <form class="form contact" action="<?php echo $this->getUrl('contributors/index/partnerprogramsave', ['_secure' => true]);?>" id="custom-form" method="post" data-hasrequired="<?php  echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}' style="width:100%; float: none;"  >
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Name *" required>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Your Email*" required>
+          </div>
+          <p>By subscribing to the newsletter, I acknowledge that I have read <a href="<?= $block->getUrl('privacy-policy'); ?>">Mageleven Privacy Policy</a>, and agree that my email will be used for marketing purposes.</p>
+          <button type="submit" title="<?php  echo __('Submit') ?>" class="btn btn-primary"><span><?php  echo __('Submit') ?></span></button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

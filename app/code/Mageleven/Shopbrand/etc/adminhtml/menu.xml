@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<!-- <update id="mageleven" title="Mageleven" module="Mageleven_Shopbrand" sortOrder="10" resource="Mageleven_Shopbrand::mageleven"/> -->
+
+	        <add id="Mageleven_Shopbrand::shopbrand" title="Shop Brand" module="Mageleven_Shopbrand" sortOrder="10" parent="mageleven" resource="Mageleven_Shopbrand::shopbrand"/>
+
+				<add id="Mageleven_Shopbrand::shopbrand_brand" title="Brand" module="Mageleven_Shopbrand" sortOrder="10" parent="Mageleven_Shopbrand::shopbrand" action="shopbrand/brand" resource="Mageleven_Shopbrand::shopbrand_brand"/>
+    </menu>
+</config>

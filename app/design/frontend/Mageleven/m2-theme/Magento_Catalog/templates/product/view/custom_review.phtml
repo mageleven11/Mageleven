@@ -1,0 +1,38 @@
+<?php 
+/* Called rating avg from custom extension */
+$blockDepend = $block->getLayout()->createBlock('Mageleven\SeoTags\Block\CustomTags');
+		$product = $block->getProduct();
+
+		$rating_average =  $product->getRatingSummary()->getRatingSummary();
+		$finalavg = $blockDepend->getReviewRatting();
+		$_reviewCount = $product->getRatingSummary()->getReviewsCount();
+		// Determine precision based on whether $finalavg is a whole number or not
+		$precision = ($finalavg == floor($finalavg)) ? 1 : 2;
+		// Format the average rating dynamically
+		 $_reviewCount = $product->getRatingSummary()->getReviewsCount();
+		$rating_avg =  $block->getReviewRatting();
+		$_ratingSummary =  number_format($finalavg, $precision);
+		if(!$_reviewCount == 0){
+           if($_ratingSummary){ ?>
+    <div class="detailcustomrating">
+        <span class="rat_avgcustom"><?= $_ratingSummary ?></span>       	
+	    <div class="product-reviews-summary short">
+	        <div class="rating-summary">
+	            <div title="<?php echo (float)$rating_average; ?>%" class="rating-result">
+	                <span style="width:<?php echo (float)$rating_average; ?>%"><span><?php echo (float)$rating_average; ?>%</span></span>
+	            </div>
+	        </div>
+	        <div class="reviews-actions">
+	            <?php echo __('('.$_reviewCount.')'); ?>
+	        </div>
+	        <span class="product-reviews-summary reviews-actions"><a href="#review-form">Reviews</a></span>
+	    </div>
+	</div>
+		<?php }
+		}else{ ?>
+			<div classs="product-reviews-summary empty">
+				<div class="reviews-actions"><a href="#review-form">Be the first to review this product</a></div>
+			</div>
+		<?php }  ?>
+
+	

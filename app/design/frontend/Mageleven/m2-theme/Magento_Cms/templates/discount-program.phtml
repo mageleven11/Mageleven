@@ -1,0 +1,159 @@
+<?php 
+
+$helper = $this->helper('Itheavens\Fanpage\Helper\Data');
+$blockObj= $block->getLayout()->createBlock('Itheavens\Fanpage\Block\Index\Bundleadded');
+$products = $blockObj->getProducts();
+?>
+<section class="service-banner discount-banner">
+   <div class="container">
+      <div class="row">
+         <?php  echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('discount-program-banner')->toHtml(); ?>
+      </div>
+   </div>
+</section>
+<div class="build-bundle">
+         <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('discount-program-build-your-bundle')->toHtml(); ?>
+</div>
+<!-- join our team -->
+    <div class="flexibility flex">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-lg-12 text-center wow fadeInUp">
+    				<h2>Improve The Flexibility</h2>
+    			</div>
+    			<div class="col-lg-6 wow fadeInLeft">
+    				<div class="whbox">
+    					<h3 class="pull-left mt-2">Extension List</h3>
+    					<div class="dition">
+    						<h3>EDITION</h3>
+    						<a href="javascript:;" data-type="Community" class="ce edition_type active_eece">CE</a>
+    						<a href="javascript:;" data-type="Enterprise" class="ee edition_type">EE</a>
+    					</div>
+    					<div class="clearfix"></div>
+    					<hr>
+    					<div class="search">
+	    						<div class="input-group mb-3">
+    <input type="text" data-type="Community" class="form-control search_eece" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2">
+    <div class="input-group-append">
+        <button class="btn btn_search_eece" type="button" id="button-addon2"><img src="<?php echo $this->getViewFileUrl('images/search.png'); ?>" alt="search"></button>
+    </div>
+    <div class="input-group-append">
+        <button class="btn clear-search" type="button"><svg enable-background="new 0 0 32 32" height="32px" id="Слой_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M17.459,16.014l8.239-8.194c0.395-0.391,0.395-1.024,0-1.414c-0.394-0.391-1.034-0.391-1.428,0  l-8.232,8.187L7.73,6.284c-0.394-0.395-1.034-0.395-1.428,0c-0.394,0.396-0.394,1.037,0,1.432l8.302,8.303l-8.332,8.286  c-0.394,0.391-0.394,1.024,0,1.414c0.394,0.391,1.034,0.391,1.428,0l8.325-8.279l8.275,8.276c0.394,0.395,1.034,0.395,1.428,0  c0.394-0.396,0.394-1.037,0-1.432L17.459,16.014z" fill="#121313" id="Close"/><g/><g/><g/><g/><g/><g/></svg></button>
+    </div>
+</div>
+
+    					</div>
+    					<ul class="scroll-list list-products">
+    						
+    					</ul>
+    				</div>
+    			</div>
+    			<div class="col-lg-6 wow fadeInRight">
+    				<div class="whbox bundle-whbox">
+    					<h3 class="mt-2">Your Bundle</h3>
+    					<hr>
+    					<ul class="scroll-list bundle list-bundle">
+    					   <?php 
+                            $price = 0;
+                            foreach ($products as $product) {
+                            $imageUrl = $helper->getImageUrl($product);
+                           ?>
+                            <li>
+                              <a href="javascript:;">
+                                <img src="<?php echo $imageUrl; ?>" alt="">
+                                <p><?php echo $product->getName(); ?></p>
+
+                                <div class="price discount_producta" data-id="<?php echo $product->getId(); ?>"><?php echo $helper->getFormattedPrice($product->getFinalPrice()); ?></div>
+                                <?php $price = $price+$product->getFinalPrice(); ?>
+                              </a>
+                            </li>
+                            
+                            <?php  
+                              }
+                            ?>	
+    					</ul>
+    					<h3 class="mt-4">Total</h3>
+    					<hr>
+                        
+    					<table class="table">
+    						<tr>
+    							<td>Subtotal</td>
+    							<td align="right"><?php echo $helper->getFormattedPrice($price); ?></td>
+    						</tr>
+    						<tr>
+                                <?php $discount_percent = $helper->getDiscountByRule($price); ?>
+    							<td>Your discount <sup><?php echo $discount_percent ?>%</sup></td>
+    							<td align="right">
+                                    <?php $final_discount_price =  ($discount_percent/100)*$price; ?>
+                                    <strong><?php echo $helper->getFormattedPrice($final_discount_price); ?></strong></td>
+    						</tr>
+    						<tr>
+    							<td>Grand Total	</td>
+                                <?php $grand_price = $price-$final_discount_price; ?>
+    							<td align="right"><strong><?php echo $helper->getFormattedPrice($grand_price); ?></strong></td>
+    						</tr>
+    					</table>
+    					<a href="javascript:;" class="btn btn-primary d-block bundle_addToCart">Add To Cart and Checkout</a>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+   <div class="ajaxloader" style="display:none"></div>
+
+<!-- <script type="text/x-magento-init">
+        {
+            "*": {
+                "Itheavens_Fanpage/js/custom": {
+                    "AjaxUrl": "<?php //echo $ajaxurl; ?>",
+                    "CurrentProduct": "1",
+                }
+            }
+        }
+</script> -->
+<style type="text/css">
+.ajaxloader{
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url("<?php echo $this->getBaseUrl(); ?>pub/media/loader.gif") 50% 50% no-repeat rgb(249,249,249);
+  opacity: 0.7;
+}
+</style>
+<script>
+	require(['jquery'],function($){
+      $(document).ready(function(){
+        $('.btn_search_eece').on('click', searchProducts);
+        $('.search_eece').on('keypress', function(event){
+            if(event.keyCode === 13){
+                searchProducts();
+            }
+        });
+
+        $('.search_eece').on('keyup', function(event){
+            if(event.keyCode === 8 || event.keyCode === 46){ // Delete or Backspace key
+                searchProducts();
+            }
+        });
+
+        $('.clear-search').on('click', function(){
+            $('.search_eece').val('');
+            searchProducts();
+        });
+
+        function searchProducts(){
+            var searchTerm = $('.search_eece').val().toLowerCase();
+            $('.list-products li').hide().filter(function(){
+                return $(this).text().toLowerCase().indexOf(searchTerm) != -1;
+            }).show();
+
+            if($('.list-products li:visible').length === 0){
+                $('.list-products').append('<li>Result not found</li>');
+            }
+        }
+    });
+});
+</script>

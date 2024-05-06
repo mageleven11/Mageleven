@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageleven_DeleteOrders::main_menu" title="Delete Order" module="Mageleven_DeleteOrders" sortOrder="20" resource="Mageleven_DeleteOrders::main_menu" />
+        <add id="Mageleven_DeleteOrders::configuration" title="Configurations" module="Mageleven_DeleteOrders" parent="Mageleven_DeleteOrders::main_menu" sortOrder="10" action="adminhtml/system_config/edit/section/delete_orders" resource="Mageleven_DeleteOrders::configuration"/>
+    </menu>
+</config>

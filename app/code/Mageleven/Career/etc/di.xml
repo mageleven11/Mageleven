@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Mageleven\Career\Api\Data\AllcareerInterface" type="Mageleven\Career\Model\Allcareer" />
+	<preference for="Mageleven\Career\Api\AllcareerRepositoryInterface" type="Mageleven\Career\Model\AllcareerRepository" />
+	<virtualType name="AllcareerGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Mageleven\Career\Model\ResourceModel\Allcareer\Collection</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="VirtualTypeName" type="Magento\Catalog\Model\ImageUploader">
+       <arguments>
+          <argument name="baseTmpPath" xsi:type="string">thumb/image</argument>
+          <argument name="basePath" xsi:type="string">thumb/image</argument>
+          <argument name="allowedExtensions" xsi:type="array">
+             <item name="jpg" xsi:type="string">jpg</item>
+             <item name="jpeg" xsi:type="string">jpeg</item>
+             <item name="gif" xsi:type="string">gif</item>
+             <item name="png" xsi:type="string">png</item>
+          </argument>
+       </arguments>
+    </virtualType>
+    
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="career_allcareer_listing_data_source" xsi:type="string">Mageleven\Career\Model\ResourceModel\Allcareer\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Mageleven\Career\Model\ResourceModel\Allcareer\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageleven_career</argument>
+            <argument name="eventPrefix" xsi:type="string">mageleven_career_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">mageleven_career_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Mageleven\Mageleven\Model\ResourceModel\Allcareer</argument>
+        </arguments>
+    </type>
+	<type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="Mageleven\Career\Api\Data\AllcareerInterface" xsi:type="string">Mageleven\Career\Api\AllcareerRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Mageleven\Career\Controller\Adminhtml\Index\Uploader">
+       <arguments>
+          <argument name="imageUploader" xsi:type="object">VirtualTypeName</argument>
+       </arguments>
+    </type>
+</config>

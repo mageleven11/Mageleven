@@ -1,0 +1,23 @@
+
+
+
+</head>
+    <div id="pre-loader-wrapper">
+        <!-- loader -->
+        <div id="pre-loader"><img src="<?= $this->getUrl('media')."mageleven.gif" ?>"></div>
+        <!-- animation left -->
+        <div class="pre-loader-section section-left"></div>
+        <!-- animation right -->
+        <div class="pre-loader-section section-right"></div>
+    </div>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script type="text/javascript">
+        require(['jquery'],function($){
+      $( window ).on( "load", function() {
+         // console.log('Hello target');
+         $('body').addClass('pre-loaded');
+        });
+    })
+ </script>
+

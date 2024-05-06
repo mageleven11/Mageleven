@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Newsletter\Block\Subscribe $block */
+
+?>
+<form class="form subscribe"
+    novalidate
+    action="<?= $block->escapeUrl($block->getFormActionUrl()) ?>"
+    method="post"
+    data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+    id="newsletter-validate-detail">
+    <div class="input-group">
+    <input name="email" type="email" id="newsletter"
+           placeholder="<?= $block->escapeHtml(__('Enter Your Email Address')) ?>"
+           data-mage-init='{"mage/trim-input":{}}'
+           data-validate="{required:true, 'validate-email':true}"
+           class="form-control"
+           aria-label="Recipient's username" aria-describedby="button-addon2"/>
+    <div class="input-group-append">
+        <button class="btn btn-primary" id="button-addon2" title="<?= $block->escapeHtmlAttr(__('Subscribe')) ?>" type="submit"><?= $block->escapeHtml(__('SUBSCRIBE')) ?>
+        </button>
+    </div>
+    </div>
+</form>

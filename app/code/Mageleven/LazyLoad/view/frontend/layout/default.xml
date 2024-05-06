@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Mageleven (support@mageleven.com). All rights reserved.
+ * Please visit Mageleven.com for license details (https://mageleven.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="after.body.start">
+            <block class="Mageleven\LazyLoad\Block\Lazy" name="mageleven.lazyload" template="Mageleven_LazyLoad::lazy.phtml" >
+                <arguments>
+                    <argument name="lazy_load_config" xsi:type="array">
+                        <item name="elements_selector" xsi:type="string">img,div</item>
+                        <item name="data_srcset" xsi:type="string">originalset</item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
